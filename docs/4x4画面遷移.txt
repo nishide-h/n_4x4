@@ -1,0 +1,66 @@
+[top#]
+・4x4概要、使い方説明
+・試してみるボタン
+--
+試してみるクリック
+==> sheet_index
+
+[sheet_index#]
+・シート一覧リンク
+・シート登録ボタン
+--
+登録ボタンクリック
+==> sheet_new
+リンククリック
+={sheet_id}=> sheet_show
+
+[sheet_new]
+・シート名欄
+・新規登録ボタン
+--
+新規登録ボタンクリック
+==> sheet_show
+
+[sheet_show#]
+・日付
+・シート名称
+・メッセージ表示
+・4x4ステータスアイコン
+・task_index
+・優先順位の切替ボタン
+・戻るボタン
+--
+シート編集
+==> sheet_edit
+タスク登録
+==> task_new
+タスククリック
+==> task_show
+切替ボタンクリック
+優先順位クリック
+==> sheet_show
+
+[sheet_edit#]
+・シート名欄
+・編集ボタン
+--
+編集ボタンクリック
+={sheet_id}=> sheet_show
+
+[task_show]
+・タスク表示
+-
+タスク編集
+={task_id}=> task_edit
+
+[task_new]
+・入力欄
+・新規作成ボタン
+==> sheet_show
+
+[task_edit]
+・入力欄
+・編集ボタン
+--
+編集ボタンクリック
+==>sheet_show
