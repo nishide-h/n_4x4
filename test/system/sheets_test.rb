@@ -30,6 +30,7 @@ class SheetsTest < ApplicationSystemTestCase
     all(:css, 'tbody tr')[1].click_link "Show"
     assert_equal 200, status_code
     
+    assert_text Time.now.strftime("%Y/%m/%d")
     assert_text @sheet.title
   end
 
