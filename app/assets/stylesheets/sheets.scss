@@ -1,3 +1,47 @@
-// Place all the styles related to the Sheets controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+// const
+$back-color: #F4F5F7;
+$white-color: #fbfaf5;
+$red-color: #e60033;
+//$blue-color: #223a70;0095d9
+$blue-color: #0095d9;
+//$green-color: #006e54;
+$green-color: #3eb370;
+$border-width: 2px;
+
+body {
+  background-color: $back-color;
+  //font-family: "Mplus 1p";
+  font-family: "Rounded Mplus 1c";
+}
+
+.container {
+  margin: 10px;
+  display: flex;
+  flex-flow: row wrap;
+  background-color: white-color;
+  border-top: $border-width solid $green-color;
+  border-left: $border-width solid $green-color;
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(100% / 4 - 2px);
+    height: 100px;
+    border-right: $border-width solid $green-color;
+    border-bottom: $border-width solid $green-color;
+  }
+  .header {
+    //background-color: $red-color;
+    background-color: $white-color;
+    p {
+      color: $green-color;
+      font-size: 30px;
+      font-family: "Rounded Mplus 1c";
+    }
+  }
+  .task {
+    background-color: $white-color;
+    color: $blue-color; //blue;
+    font-size: 20px;
+  }
+}
