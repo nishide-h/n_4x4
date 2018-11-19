@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "application_system_test_case"
 
 class SheetsTest < ApplicationSystemTestCase
@@ -21,15 +23,15 @@ class SheetsTest < ApplicationSystemTestCase
     assert_text "Sheet was successfully created"
     click_on "Back"
   end
-  
+
   test "登録したシート確認" do
     # visit sheet_url(id: @sheet.id)
     visit sheets_url
     assert_equal 200, status_code
 
-    all(:css, 'tbody tr')[1].click_link "Show"
+    all(:css, "tbody tr")[1].click_link "Show"
     assert_equal 200, status_code
-    
+
     assert_text Time.now.strftime("%Y/%m/%d")
     assert_text @sheet.title
   end
