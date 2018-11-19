@@ -1,6 +1,6 @@
 valid:
   name: MyString
-  sheet: one
+  sheet: valid
 
 two:
   name: MyString
