@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SheetsController < ApplicationController
   before_action :set_sheet, only: [:show, :edit, :update, :destroy]
 
@@ -6,13 +8,13 @@ class SheetsController < ApplicationController
   end
 
   def show
+    @tasks = @sheet.tasks
   end
 
   def new
     @sheet = Sheet.new
   end
 
-  # GET /sheets/1/edit
   def edit
   end
 
@@ -21,7 +23,7 @@ class SheetsController < ApplicationController
 
     respond_to do |format|
       if @sheet.save
-        format.html { redirect_to @sheet, notice: 'Sheet was successfully created.' }
+        format.html { redirect_to @sheet, notice: "Sheet was successfully created." }
         format.json { render :show, status: :created, location: @sheet }
       else
         format.html { render :new }
@@ -33,7 +35,7 @@ class SheetsController < ApplicationController
   def update
     respond_to do |format|
       if @sheet.update(sheet_params)
-        format.html { redirect_to @sheet, notice: 'Sheet was successfully updated.' }
+        format.html { redirect_to @sheet, notice: "Sheet was successfully updated." }
         format.json { render :show, status: :ok, location: @sheet }
       else
         format.html { render :edit }
@@ -45,7 +47,7 @@ class SheetsController < ApplicationController
   def destroy
     @sheet.destroy
     respond_to do |format|
-      format.html { redirect_to sheets_url, notice: 'Sheet was successfully destroyed.' }
+      format.html { redirect_to sheets_url, notice: "Sheet was successfully destroyed." }
       format.json { head :no_content }
     end
   end

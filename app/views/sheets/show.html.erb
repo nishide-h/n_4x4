@@ -3,28 +3,20 @@
 <div class="container">
   <div class="header">
     <p>
-    <%= @sheet.created_at.strftime("%Y/%m/%d") %>
-    <br>
-    <br>
-    <%= @sheet.title %>
+      <%= @sheet.created_at.strftime("%Y/%m/%d") %>
+      <br>
+      <br>
+      <%= @sheet.title %>
     </p>
   </div>
-  <div class="task">タスク1</div>
-  <div class="task">タスク2</div>
-  <div class="task">タスク3</div>
-  <div class="task">タスク4</div>
-  <div class="task">タスク5</div>
-  <div class="task">タスク6</div>
-  <div class="task">タスク7</div>
-  <div class="task">タスク8</div>
-  <div class="task">タスク9</div>
-  <div class="task">タスク10</div>
-  <div class="task">タスク11</div>
-  <div class="task">タスク12</div>
-  <div class="task">タスク13</div>
-  <div class="task">タスク14</div>
-  <div class="task">タスク15</div>
+  <% # byebug %>
+  <% @sheet.tasks.each do |task| %>
+    <div class="task">
+      <%= task.name %>
+    </div>
+  <% end %>
 </div>
 
+<%= link_to 'New Task', new_sheet_task_path(@sheet) %>
 <%= link_to 'Edit', edit_sheet_path(@sheet) %> |
 <%= link_to 'Back', sheets_path %>
