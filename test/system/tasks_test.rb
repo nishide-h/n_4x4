@@ -8,11 +8,16 @@ class TasksTest < ApplicationSystemTestCase
     @sheet = sheets(:valid)
   end
 
-  test "visiting the index" do
+  test "visiting the index on sheet" do
     visit sheet_url(@sheet)
     assert_text "本日タスク"
     assert_text "MyString"
     assert_no_text "MyString2"
+
+    assert_checked_field("登録")
+    assert_unchecked_field("選択-重要")
+    assert_unchecked_field("選択-緊急")
+    assert_unchecked_field("選択-依頼")
   end
 
   test "creating a Task" do
@@ -40,7 +45,7 @@ class TasksTest < ApplicationSystemTestCase
     assert_no_link "New Task"
     assert_no_text "MyString16"
   end
-
+ 
   #
   # test "updating a Task" do
   #   visit tasks_url

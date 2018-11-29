@@ -1,5 +1,10 @@
 <p id="notice"><%= notice %></p>
-
+<div id="radio_mode">
+  <label><%= radio_button("page", :mode, 1, checked: true) %> 登録＞</label>
+  <label><%= radio_button("page", :mode, 2) %> 選択-重要＞</label>
+  <label><%= radio_button("page", :mode, 3) %> 選択-緊急＞</label>
+  <label><%= radio_button("page", :mode, 4) %> 選択-依頼</label>
+</div>
 <div class="container">
   <div class="header">
     <p>
@@ -9,7 +14,6 @@
       <%= @sheet.title %>
     </p>
   </div>
-  <% # byebug %>
   <% @sheet.tasks.each do |task| %>
     <div class="task">
       <%= task.name %>
