@@ -2,7 +2,7 @@
 
 class TasksController < ApplicationController
   before_action :set_sheet
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_task, only: [:show, :edit, :update, :destroy, :toggle_select1]
 
   def index
     @tasks = @sheet.tasks.all
@@ -49,6 +49,19 @@ class TasksController < ApplicationController
     respond_to do |format|
       format.html { redirect_to tasks_url, notice: "Task was successfully destroyed." }
       format.json { head :no_content }
+    end
+  end
+
+  def toggle_select1
+    @task.toggle(:select1)
+    respond_to do |format|
+      if @task.save
+        format.html { redirect_to @sheet, notice: 'Task was successfully updated.' }
+        format.json { render :show, status: :ok, location: @sheet }
+      else
+        format.html { render :edit }
+        format.json { render json: @task.errors, status: :unprocessable_entity }
+      end
     end
   end
 

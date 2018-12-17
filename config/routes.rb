@@ -3,6 +3,10 @@
 Rails.application.routes.draw do
   root "sheets#index"
   resources :sheets do
-    resources :tasks
+    resources :tasks do
+      member do
+        patch "toggle_select1"
+      end
+    end
   end
 end
