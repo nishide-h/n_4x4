@@ -1,11 +1,11 @@
 <p id="notice"><%= notice %></p>
 <div id="radio_mode">
-  <label><%= radio_button("page", :mode, 1, checked: true) %> 登録＞</label>
-  <label><%= radio_button("page", :mode, 2) %> 選択-重要＞</label>
-  <label><%= radio_button("page", :mode, 3) %> 選択-緊急＞</label>
-  <label><%= radio_button("page", :mode, 4) %> 選択-依頼</label>
+  <label><%= radio_button("page", :mode, 0, checked: true) %> 登録＞</label>
+  <label><%= radio_button("page", :mode, 1) %> 選択-重要＞</label>
+  <label><%= radio_button("page", :mode, 2) %> 選択-緊急＞</label>
+  <label><%= radio_button("page", :mode, 3) %> 選択-依頼</label>
 </div>
-<div class="container">
+<div class="container" id="sheet_<%= @sheet.id %>">
   <div class="header">
     <p>
       <%= @sheet.created_at.strftime("%Y/%m/%d") %>
@@ -14,8 +14,8 @@
       <%= @sheet.title %>
     </p>
   </div>
-  <% @sheet.tasks.each do |task| %>
-    <div class="task">
+  <% @sheet.tasks.each_with_index do |task, i| %>
+    <div class="task" id="task_<%= i+1 %>">
       <%= task.name %>
     </div>
   <% end %>
