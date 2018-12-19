@@ -46,6 +46,19 @@ class TasksTest < ApplicationSystemTestCase
     assert_no_text "MyString16"
   end
  
+  test "重要選択モードでクリック時、選択タスクが更新される" do
+    visit sheet_url(@sheet)
+
+    choose "選択-重要"
+    # find("div.task").click
+    find("div#task_#{ @task.id }").click
+
+    assert_text "Task was successfully updated."
+  end
+  
+  #test "選択-重要モードで、タスクをクリックした時に該当タスクの重要フラグがtru
+  #ueになること"
+  #test "タスクの重要フラグがTrueであれば、タスクに○が表示されること"
   #
   # test "updating a Task" do
   #   visit tasks_url

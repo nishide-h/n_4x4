@@ -15,7 +15,7 @@
     </p>
   </div>
   <% @sheet.tasks.each_with_index do |task, i| %>
-    <div class="task" id="task_<%= i+1 %>">
+    <div class="task" id="task_<%= task.id %>">
       <%= task.name %>
     </div>
   <% end %>
