@@ -8,7 +8,7 @@ $ ->
 
     switch radioMode
       when "1"
-        alert "クリック モード: #{ radioMode  } シートID：#{sheetId} タスクID: #{ id } "
+        # alert "クリック モード: #{ radioMode  } シートID：#{sheetId} タスクID: #{ id } "
         $.ajax(
           url: "/sheets/#{ sheetId }/tasks/#{ id }/toggle_select1"
           type: "PATCH" # PUT?
