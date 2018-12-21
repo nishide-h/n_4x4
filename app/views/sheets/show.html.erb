@@ -14,8 +14,10 @@
       <%= @sheet.title %>
     </p>
   </div>
+
   <% @sheet.tasks.each_with_index do |task, i| %>
     <div class="task" id="task_<%= task.id %>">
+      <%= image_tag "flag1.png", size: "80x80", style: "position: absolute", id: "task_#{ task.id }_select1" if task.select1? %>
       <%= task.name %>
     </div>
   <% end %>
