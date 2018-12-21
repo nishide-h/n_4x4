@@ -1,4 +1,4 @@
-// const
+// カラー定義
 $back-color: #F4F5F7;
 $white-color: #fbfaf5;
 $red-color: #e60033;
@@ -29,19 +29,24 @@ body {
     height: 100px;
     border-right: $border-width solid $green-color;
     border-bottom: $border-width solid $green-color;
-  }
-  .header {
-    //background-color: $red-color;
-    background-color: $white-color;
-    p {
-      color: $green-color;
-      font-size: 30px;
-      font-family: "Rounded Mplus 1c";
+    z-index: 1;
+    &.header {
+      //background-color: $red-color;
+      background-color: $white-color;
+      z-index:2;
+      p {
+        color: $green-color;
+        font-size: 30px;
+        font-family: "Rounded Mplus 1c";
+        z-index:3;
+      }
     }
-  }
-  .task {
-    background-color: $white-color;
-    color: $blue-color; //blue;
-    font-size: 20px;
+    &.task {
+      background-color: $white-color;
+      color: $blue-color; //blue;
+      font-size: 20px;
+      cursor: pointer;
+      z-index: 2;
+    }
   }
 }
