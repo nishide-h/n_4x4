@@ -1,6 +1,6 @@
 # window.alert 'one'
 
-$ ->
+$(document).on 'turbolinks:load', ->
   $('div.task').on 'click', ->
     radioMode = $("input[name='page[mode]']:checked").val()
     sheetId = $("div.container").attr('id').substr(6)

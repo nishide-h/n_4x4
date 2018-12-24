@@ -56,7 +56,25 @@ class TasksTest < ApplicationSystemTestCase
     assert find("#task_#{ @task.id }_select1")
   end
   
-  #test "すでに登録されていれば、表示で重要アイコンが表示されている"
+  # test "すでに登録されていれば、表示で重要アイコンが表示されている" do
+  test "重要選択されちるものを再選択で重要アイコンが消えること" do
+    visit sheet_url(@sheet)
+    choose "選択-重要"
+    find("div#task_#{ @task.id }").click
+    assert_text "Task was successfully updated."
+    assert find("#task_#{ @task.id }_select1")
+
+    choose "選択-重要"
+    find("div#task_#{ @task.id }").click
+
+    assert_text "Task was successfully updated."
+    #binding.pry
+    sleep 1
+    assert_raises(Capybara::ElementNotFound) do
+      find("#task_#{ @task.id }_select1")
+    end
+  end
+
   #test "選択-重要モードで、タスクをクリックした時に該当タスクの重要フラグがtru
   #ueになること"
   #test "タスクの重要フラグがTrueであれば、タスクに○が表示されること"
