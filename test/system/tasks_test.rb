@@ -68,17 +68,40 @@ class TasksTest < ApplicationSystemTestCase
     find("div#task_#{ @task.id }").click
 
     assert_text "Task was successfully updated."
-    #binding.pry
     sleep 1
     assert_raises(Capybara::ElementNotFound) do
       find("#task_#{ @task.id }_select1")
     end
   end
 
-  #test "選択-重要モードで、タスクをクリックした時に該当タスクの重要フラグがtru
-  #ueになること"
-  #test "タスクの重要フラグがTrueであれば、タスクに○が表示されること"
-  #
+  test "緊急選択モードでクリック時、選択タスクが更新され画像が表示される" do
+    visit sheet_url(@sheet)
+
+    choose "選択-緊急"
+    find("div#task_#{ @task.id }").click
+
+    assert_text "Task was successfully updated."
+    assert find("#task_#{ @task.id }_select2")
+  end
+  
+  # test "すでに登録されていれば、表示で重要アイコンが表示されている" do
+  test "緊急選択されちるものを再選択で緊急アイコンが消えること" do
+    visit sheet_url(@sheet)
+    choose "選択-緊急"
+    find("div#task_#{ @task.id }").click
+    assert_text "Task was successfully updated."
+    assert find("#task_#{ @task.id }_select2")
+
+    choose "選択-緊急"
+    find("div#task_#{ @task.id }").click
+
+    assert_text "Task was successfully updated."
+    sleep 1
+    assert_raises(Capybara::ElementNotFound) do
+      find("#task_#{ @task.id }_select2")
+    end
+  end
+  
   # test "updating a Task" do
   #   visit tasks_url
   #   click_on "Edit", match: :first
