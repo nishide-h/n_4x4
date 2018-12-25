@@ -5,3 +5,13 @@ valid:
 two:
   name: MyString
   sheet: two
+
+valid_only_select1:
+  name: 重要タスク
+  sheet: valid
+  select1: true
+
+valid_only_select2:
+  name: 緊急タスク
+  sheet: valid
+  select2: true

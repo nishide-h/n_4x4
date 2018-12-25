@@ -34,14 +34,15 @@ class TasksTest < ApplicationSystemTestCase
   test "creating a Task to 15 items" do
     visit sheet_url(@sheet)
 
-    (2..15).each do |i|
+    tasks_size = @sheet.tasks.size + 1
+    (tasks_size..15).each do |i|
       click_on "New Task"
       fill_in "Name", with: "#{@task.name}#{i}"
       click_on "Create Task"
     end
 
     assert_text "MyString15"
-    assert_text "MyString", count: 15
+    assert_css "div.task", count: 15
     assert_no_link "New Task"
     assert_no_text "MyString16"
   end
