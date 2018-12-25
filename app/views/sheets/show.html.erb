@@ -18,6 +18,7 @@
   <% @sheet.tasks.each_with_index do |task, i| %>
     <div class="task" id="task_<%= task.id %>">
       <%= image_tag "flag1.png", size: "80x80", style: "position: absolute", id: "task_#{ task.id }_select1" if task.select1? %>
+      <%= image_tag "flag2.png", size: "60x60", style: "position: absolute", id: "task_#{ task.id }_select2" if task.select2? %>
       <%= task.name %>
     </div>
   <% end %>
