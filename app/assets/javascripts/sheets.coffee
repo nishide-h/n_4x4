@@ -31,6 +31,14 @@ $(document).on 'turbolinks:load', ->
           return
         return
       when "3"
+        $.ajax(
+          url: "/sheets/#{ sheetId }/tasks/#{ id }/toggle_select3"
+          type: "PATCH"
+          data: sheetId: sheetId, id: id
+        ).done((response) ->
+          return
+        ).fail (xhr) ->
+          return
         return
       else
         return

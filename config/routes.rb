@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       member do
         patch "toggle_select1"
         patch "toggle_select2"
+        patch "toggle_select3"
       end
     end
   end

@@ -2,7 +2,7 @@
 
 class TasksController < ApplicationController
   before_action :set_sheet
-  before_action :set_task, only: [:show, :edit, :update, :destroy, :toggle_select1, :toggle_select2]
+  before_action :set_task, only: [:show, :edit, :update, :destroy, :toggle_select1, :toggle_select2, :toggle_select3]
 
   def index
     @tasks = @sheet.tasks.all
@@ -56,7 +56,7 @@ class TasksController < ApplicationController
     @task.toggle(:select1)
     respond_to do |format|
       if @task.save
-        format.html { redirect_to @sheet, notice: 'Task was successfully updated.' }
+        format.html { redirect_to @sheet, notice: "Task was successfully updated." }
         format.json { render :show, status: :ok, location: @sheet }
       else
         format.html { render :edit }
@@ -69,7 +69,7 @@ class TasksController < ApplicationController
     @task.toggle(:select2)
     respond_to do |format|
       if @task.save
-        format.html { redirect_to @sheet, notice: 'Task was successfully updated.' }
+        format.html { redirect_to @sheet, notice: "Task was successfully updated." }
         format.json { render :show, status: :ok, location: @sheet }
       else
         format.html { render :edit }
@@ -77,6 +77,20 @@ class TasksController < ApplicationController
       end
     end
   end
+
+  def toggle_select3
+    @task.toggle(:select3)
+    respond_to do |format|
+      if @task.save
+        format.html { redirect_to @sheet, notice: "Task was successfully updated." }
+        format.json { render :show, status: :ok, location: @sheet }
+      else
+        format.html { render :edit }
+        format.json { render json: @task.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   private
     def set_sheet
       @sheet = Sheet.where(id: params[:sheet_id]).first
