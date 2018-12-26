@@ -17,7 +17,7 @@ class TasksTest < ApplicationSystemTestCase
     assert_checked_field("登録")
     assert_unchecked_field("選択-重要")
     assert_unchecked_field("選択-緊急")
-    assert_unchecked_field("選択-依頼")
+    assert_unchecked_field("選択-別日/依頼")
   end
 
   test "creating a Task" do
@@ -102,7 +102,33 @@ class TasksTest < ApplicationSystemTestCase
       find("#task_#{ @task.id }_select2")
     end
   end
+
+  test "別日/依頼選択モードでクリック時、選択タスクが更新され背景色が変わる" do
+    visit sheet_url(@sheet)
+
+    choose "選択-別日/依頼"
+    find("div#task_#{ @task.id }").click
+
+    assert_text "Task was successfully updated."
+    assert find("div#task_#{ @task.id }").matches_css?(".exclution")
+  end
   
+  # test "すでに登録されていれば、表示で重要アイコンが表示されている" do
+  test "別日/依頼選択されちるものを再選択で背景色が変わること" do
+    visit sheet_url(@sheet)
+    choose "選択-別日/依頼"
+    find("div#task_#{ @task.id }").click
+    assert_text "Task was successfully updated."
+    assert find("div#task_#{ @task.id }").matches_css?(".exclution")
+
+    choose "選択-別日/依頼"
+    find("div#task_#{ @task.id }").click
+
+    assert_text "Task was successfully updated."
+    sleep 1
+    assert find("div#task_#{ @task.id }").not_matches_css?(".exclution")
+  end
+ 
   # test "updating a Task" do
   #   visit tasks_url
   #   click_on "Edit", match: :first
