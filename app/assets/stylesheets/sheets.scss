@@ -6,6 +6,7 @@ $red-color: #e60033;
 $blue-color: #0095d9;
 //$green-color: #006e54;
 $green-color: #3eb370;
+$exclution-color: #DDDDDD;
 $border-width: 2px;
 
 body {
@@ -47,6 +48,9 @@ body {
       font-size: 20px;
       cursor: pointer;
       z-index: 2;
+      &.exclution {
+        background-color: $exclution-color;
+      }
     }
   }
 }
