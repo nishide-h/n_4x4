@@ -1,0 +1,23 @@
+p#notice
+  = notice
+h1
+  | Sheets
+table
+  thead
+    tr
+      th
+        | Title
+      th[colspan="3"]
+  tbody
+    - @sheets.each do |sheet|
+      tr
+        td
+          = sheet.title
+        td
+          = link_to 'Show', sheet
+        td
+          = link_to 'Edit', edit_sheet_path(sheet)
+        td
+          = link_to 'Destroy', sheet, method: :delete, data: { confirm: 'Are you sure?' }
+br
+= link_to 'New Sheet', new_sheet_path

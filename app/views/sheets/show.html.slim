@@ -1,0 +1,38 @@
+p#notice
+  = notice
+#radio_mode
+  label
+    = radio_button("page", :mode, 0, checked: true)
+    |  登録＞
+  label
+    = radio_button("page", :mode, 1)
+    |  選択-重要＞
+  label
+    = radio_button("page", :mode, 2)
+    |  選択-緊急＞
+  label
+    = radio_button("page", :mode, 3)
+    |  選択-別日/依頼
+|  <div class="container" id="sheet_
+= @sheet.id
+| "> 
+.header
+  p
+    = @sheet.created_at.strftime("%Y/%m/%d")
+    br
+    br
+    = @sheet.title
+- @sheet.tasks.each_with_index do |task, i|
+  |  <div class="task
+  = " exclution" if task.select3?
+  | " id="task_
+  = task.id
+  | "> 
+  = image_tag "flag1.png", size: "80x80", style: "position: absolute", id: "task_#{ task.id }_select1" if task.select1?
+  = image_tag "flag2.png", size: "60x60", style: "position: absolute", id: "task_#{ task.id }_select2" if task.select2?
+  = task.name
+- if @sheet.tasks.count < 15
+  = link_to 'New Task', new_sheet_task_path(@sheet)
+= link_to 'Edit', edit_sheet_path(@sheet)
+|  | 
+= link_to 'Back', sheets_path

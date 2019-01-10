@@ -1,0 +1,15 @@
+= form_with(model: task, url: sheet_tasks_path, local: true) do |form|
+  - if task.errors.any?
+    #error_explanation
+      h2
+        = pluralize(task.errors.count, "error")
+        |  prohibited this task from being saved:
+      ul
+        - task.errors.full_messages.each do |message|
+          li
+            = message
+  .field
+    = form.label :name
+    = form.text_field :name
+  .actions
+    = form.submit
