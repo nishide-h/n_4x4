@@ -11,4 +11,8 @@ html
     script[src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"]
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    = yield
+    .app-title.navbar.navbar-expand-md.navbar-light.bg-light
+      .navbar-brand n_4x4
+    .container
+      = yield
+
