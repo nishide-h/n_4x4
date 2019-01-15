@@ -17,7 +17,7 @@ p#notice
 = @sheet.id
 | "> 
 
-div class="row" style="height: 500px;"
+div class="row" style="height: 75vh;"
   .header.card.w-25.h-25.border-success
     .card-body.text-success
       .card-title
@@ -27,8 +27,8 @@ div class="row" style="height: 500px;"
       div class="card w-25 h-25 border-success task#{' bg-dark' if task.select3?}" id="task_#{task.id}"
         .card-body.text-primary
           .text-center
-            = image_tag "flag1.png", size: "100x100", id: "task_#{ task.id }_select1" if task.select1?
-            = image_tag "flag2.png", size: "100x100", id: "task_#{ task.id }_select2" if task.select2?
+            = image_tag "flag1.png", class: "img-select1", id: "task_#{ task.id }_select1" if task.select1?
+            = image_tag "flag2.png", class: "img-select2", id: "task_#{ task.id }_select2" if task.select2?
           .card-img-overlay
             .card-title
               h5= task.name
