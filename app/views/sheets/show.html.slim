@@ -35,6 +35,7 @@ div class="row" style="height: 75vh;"
 
 - if @sheet.tasks.count < 15
   = link_to 'New Task', new_sheet_task_path(@sheet)
+  |  | 
 = link_to 'Edit', edit_sheet_path(@sheet)
 |  | 
 = link_to 'Back', sheets_path
