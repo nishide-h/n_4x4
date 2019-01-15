@@ -1,8 +1,12 @@
 @import "bootstrap";
 
-.img-select1 {
-  width: 7vw;
 }
-.img-select2 {
-  width: 8vw;
+
+img {
+  &.select1 {
+    width: 7vw;
+  }
+  &.select2 {
+    width: 8vw;
+  }
 }
