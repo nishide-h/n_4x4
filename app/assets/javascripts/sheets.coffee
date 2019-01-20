@@ -2,8 +2,8 @@
 
 $(document).on 'turbolinks:load', ->
   $('div.task').on 'click', ->
-    radioMode = $("input[name='page[mode]']:checked").val()
-    sheetId = $("div.container").attr('id').substr(6)
+    radioMode = $(".radio.active input").val()
+    sheetId = $(".row")[1].id.substr(6)
     id =  $(this).attr("id").substr(5)
 
     switch radioMode

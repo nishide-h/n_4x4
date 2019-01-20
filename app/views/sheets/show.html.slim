@@ -3,20 +3,20 @@ p#notice
 
 .row
   div class="btn-group btn-group-toggle" data-toggle="buttons"
-    label.btn.btn-secondary.active
+    label.btn.btn-secondary.radio.active
       = radio_button("page", :mode, 0, checked: true, autocomplete: false)
       |  登録＞
-    label.btn.btn-secondary
+    label.btn.btn-secondary.radio
       = radio_button("page", :mode, 1, autocomplete: false)
       |  選択-重要＞
-    label.btn.btn-secondary
+    label.btn.btn-secondary.radio
       = radio_button("page", :mode, 2, autocomplete: false)
       |  選択-緊急＞
-    label.btn.btn-secondary
+    label.btn.btn-secondary.radio
       = radio_button("page", :mode, 3, autocomplete: false)
       |  選択-別日/依頼
 
-div class="row" style="height: 75vh;"
+div class="row" style="height: 75vh;" id="sheet_#{@sheet.id}"
   .header.card.w-25.h-25.border-success
     .card-body.text-success
       .card-title
