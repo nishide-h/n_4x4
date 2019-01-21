@@ -3,11 +3,15 @@
 class SheetsController < ApplicationController
   before_action :set_sheet, only: [:show, :edit, :update, :destroy]
 
+
+  MODE = ["登録＞", "選択-重要＞", "選択-緊急＞", "選択-別日/依頼"]
+
   def index
     @sheets = Sheet.all
   end
 
   def show
+    @mode = MODE
     @active_mode = session[:mode] ||= 0
     @tasks = @sheet.tasks
   end

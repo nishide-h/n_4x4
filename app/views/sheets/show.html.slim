@@ -3,18 +3,10 @@ p#notice
 
 .row
   div class="btn-group btn-group-toggle" data-toggle="buttons"
-    label.btn.btn-secondary.radio.active
-      = radio_button("page", :mode, 0, checked: true, autocomplete: false)
-      |  登録＞
-    label.btn.btn-secondary.radio
-      = radio_button("page", :mode, 1, autocomplete: false)
-      |  選択-重要＞
-    label.btn.btn-secondary.radio
-      = radio_button("page", :mode, 2, autocomplete: false)
-      |  選択-緊急＞
-    label.btn.btn-secondary.radio
-      = radio_button("page", :mode, 3, autocomplete: false)
-      |  選択-別日/依頼
+    - @mode.each_with_index do |mode, i|
+      div class="label btn btn-secondary radio #{"active" if @active_mode == i}" 
+        = radio_button("page", :mode, i, checked: true, autocomplete: false)
+        | #{ mode }
 
 div class="row" style="height: 75vh;" id="sheet_#{@sheet.id}"
   .header.card.w-25.h-25.border-success
