@@ -8,6 +8,7 @@ class SheetsController < ApplicationController
   end
 
   def show
+    @active_mode = session[:mode] ||= 0
     @tasks = @sheet.tasks
   end
 

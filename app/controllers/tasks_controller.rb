@@ -4,6 +4,7 @@ class TasksController < ApplicationController
   before_action :set_sheet
   before_action :set_task, only: [:show, :edit, :update, :destroy, :toggle_select1, :toggle_select2, :toggle_select3]
 
+
   def index
     @tasks = @sheet.tasks.all
   end
@@ -53,6 +54,7 @@ class TasksController < ApplicationController
   end
 
   def toggle_select1
+    session[:mode] = 1
     @task.toggle(:select1)
     respond_to do |format|
       if @task.save
@@ -66,6 +68,7 @@ class TasksController < ApplicationController
   end
 
   def toggle_select2
+    session[:mode] = 2
     @task.toggle(:select2)
     respond_to do |format|
       if @task.save
@@ -79,6 +82,7 @@ class TasksController < ApplicationController
   end
 
   def toggle_select3
+    session[:mode] = 3
     @task.toggle(:select3)
     respond_to do |format|
       if @task.save
