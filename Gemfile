@@ -47,9 +47,10 @@ end
 
 group :test do
   gem "capybara", ">= 2.15", "< 4.0"
-  # gem 'selenium-webdriver'
-  # gem 'chromedriver-helper'
-  gem "poltergeist"
+  gem "selenium-webdriver"
+  gem "chromedriver-helper"
+  gem "rspec-rails", "~>3.7"
+  # gem "poltergeist"
 end
 
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
