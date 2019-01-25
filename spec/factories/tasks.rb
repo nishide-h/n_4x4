@@ -4,11 +4,13 @@ FactoryBot.define do
     sheet
   end
 
-  factory :max_tasks, class: Task do
-    (1..15).each do |i|
-      name { "タスク#{i}" }
-      association :sheet, factory: :sheet_b
-    end
+  sequence :task_name do |i|
+    "タスク#{i}"
+  end
+
+  factory :task_b, class: Task do
+    name { generate :task_name }
+    :sheet_b
   end
 end
 

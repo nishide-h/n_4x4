@@ -43,28 +43,33 @@ describe "シート管理機能", type: :system do
 
     it "重要、緊急、廃止を選択していく" do
       expect(page).to have_selector(".radio.active", text: "選択-重要＞")
-      find("#task_1").click
-      expect(page).to have_selector("img#task_1_select1")
-      find("#task_2").click
-      expect(page).to have_selector("img#task_2_select1")
-      find("#task_3").click
-      expect(page).to have_selector("img#task_3_select1")
+      # find(".task")[0].click
+      (all(".task")[0]).click
+      # expect(page).to have_selector("img#task_1_select1")
+      expect(page).to have_selector("img.select1", count: 1)
+      (all(".task")[1]).click
+      expect(page).to have_selector("img.select1", count: 2)
+      (all(".task")[2]).click
+      expect(page).to have_selector("img.select1", count: 3)
 
       expect(page).to have_selector(".radio.active", text: "選択-緊急＞")
-      find("#task_4").click
-      expect(page).to have_selector("img#task_4_select2")
-      find("#task_5").click
-      expect(page).to have_selector("img#task_5_select2")
-      find("#task_6").click
-      expect(page).to have_selector("img#task_6_select2")
+      (all(".task")[3]).click
+      expect(page).to have_selector("img.select2", count: 1)
+      (all(".task")[4]).click
+      expect(page).to have_selector("img.select2", count: 2)
+      (all(".task")[5]).click
+      expect(page).to have_selector("img.select2", count: 3)
 
       expect(page).to have_selector(".radio.active", text: "選択-別日/依頼")
-      find("#task_8").click
-      expect(page).to have_selector("img#task_8_select3")
-      find("#task_9").click
-      expect(page).to have_selector("img#task_9_select3")
-      find("#task_10").click
-      expect(page).to have_selector("img#task_10_select3")
+      (all(".task")[7]).click
+      expect(page).to have_selector(".task.bg-dark", count: 1)
+      (all(".task")[8]).click
+      expect(page).to have_selector(".task.bg-dark", count: 2)
+      (all(".task")[9]).click
+      expect(page).to have_selector(".task.bg-dark", count: 3)
+      (all(".task")[10]).click
+      expect(page).to have_selector(".task.bg-dark", count: 4)
+
     end
   end
 end

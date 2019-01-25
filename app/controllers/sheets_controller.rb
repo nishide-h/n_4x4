@@ -12,8 +12,21 @@ class SheetsController < ApplicationController
 
   def show
     @mode = MODE
-    @active_mode = session[:mode] ||= 0
     @tasks = @sheet.tasks
+
+    if @tasks.size < 15
+      @active_mode = 0
+    else
+      if @tasks.where(select1: true).size < 3
+        @active_mode = 1
+      else
+        if @tasks.where(select2: true).size < 3
+          @active_mode = 2
+        else
+          @active_mode = 3
+        end
+      end
+    end
   end
 
   def new
