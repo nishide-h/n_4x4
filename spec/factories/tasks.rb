@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :Task do
+  factory :task do
     name { "タスク1" }
     sheet
   end
