@@ -23,6 +23,9 @@ div class="row" style="height: 75vh;" id="sheet_#{@sheet.id}"
           .card-img-overlay
             .card-title
               h5= task.name
+  - (15 - @sheet.tasks.size).times do
+      div class="card w-25 h-25 border-success"
+        .card-body.text-primary
 
 - if @sheet.tasks.count < 15
   = link_to 'New Task', new_sheet_task_path(@sheet)
