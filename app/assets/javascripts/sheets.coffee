@@ -1,6 +1,12 @@
 # window.alert 'one'
 
 $(document).on 'turbolinks:load', ->
+  path = location.pathname
+  if document.URL.match(/\/sheets\/\d+$/)
+    $('a')[0].focus()
+  else if document.URL.match('/tasks/new')
+    $('#task_name').focus()
+
   $('div.task').on 'click', ->
     radioMode = $(".radio.active input").val()
     sheetId = $(".row")[1].id.substr(6)
