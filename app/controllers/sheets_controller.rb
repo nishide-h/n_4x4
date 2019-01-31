@@ -7,6 +7,7 @@ class SheetsController < ApplicationController
   MODE = ["登録＞", "選択-重要＞", "選択-緊急＞", "選択-別日/依頼"]
 
   def index
+    flash[:notice] = "おはようございます！シートを作成して作業を整理しましょう！！"
     @sheets = Sheet.all
   end
 
@@ -16,6 +17,14 @@ class SheetsController < ApplicationController
 
     if @tasks.size < 15
       @active_mode = 0
+      case @tasks.size 
+      when 1
+        flash[:notice] = "3分以内に全て埋めてしまいましょう！"
+      when 10
+        flash[:notice] = "残り５つ！！"
+      else
+        flash[:notice] = "次々空欄を埋めて行きましょう！！優先順位を決めるのは全て埋めてから。"
+      end
     else
       if @tasks.where(select1: true).size < 3
         @active_mode = 1
@@ -30,6 +39,7 @@ class SheetsController < ApplicationController
   end
 
   def new
+    flash[:notice] = "シート名称は「今日やることは？」や「本日タスク」はいかがでしょう？"
     @sheet = Sheet.new
   end
 

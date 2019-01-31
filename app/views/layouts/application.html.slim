@@ -13,6 +13,8 @@ html
   body
     .app-title.navbar.navbar-expand-md.navbar-light.bg-light
       .navbar-brand n_4x4
+      .navbar-custom
+        .navbar-text= flash[:notice]
     .container
       = yield
 
