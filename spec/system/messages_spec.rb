@@ -58,9 +58,34 @@ describe "Messages", type: :system do
   end
   
   describe "choice task" do
-    context "重要選択"
-    context "緊急選択"
-    context "除外選択"
+    before do
+      visit sheet_path(sheet_b)
+    end
+
+    describe "#select1 2 3" do
+      it "register completed" do
+        expect(page).to have_content("書き上げたタスクを俯瞰して、特に重要なものを３つ選択して下さい。")
+      end
+
+      it "#select1 2 3" do
+        (all(".task")[0]).click
+        sleep(1)
+        (all(".task")[1]).click
+        expect(page).to have_content("残りひとつです！！")
+
+        (all(".task")[2]).click
+        expect(page).to have_content("再び全体を見渡して、緊急性の高いものを３つ選択して下さい。重要と被ってもOK")
+
+        (all(".task")[3]).click
+        sleep(1)
+        (all(".task")[4]).click
+        expect(page).to have_content("残りひとつです！！")
+
+        (all(".task")[5]).click
+        expect(page).to have_content("もう一度見渡して、人に頼めるものや今日する必要のないタスクを選択して下さい。個数制限なし")
+        expect(page).to have_content("選択が終われば完成ボタンを押して下さい。")
+      end
+    end
   end
 end
 
