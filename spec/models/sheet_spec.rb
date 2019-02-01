@@ -13,7 +13,7 @@ RSpec.describe Sheet, type: :model do
     @sheet.title = nil
     @sheet.valid?
 
-    expect(@sheet.errors[:title]).to include("can't be blank")
+    expect(@sheet.errors[:title]).to include("を入力してください")
   end
 
   xdescribe "up to 15 tasks on one sheet" do
