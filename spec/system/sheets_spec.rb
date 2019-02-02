@@ -12,8 +12,8 @@ describe "Sheet", type: :system do
     it "シートが作成でき、一覧に表示されること" do
       click_link "New Sheet"
 
-      fill_in "Title", with: "今日やること"
-      click_button "Create Sheet"
+      fill_in "シート名", with: "今日やること"
+      click_button "登録する"
 
       expect(page).to have_content "今日やること"
     end
@@ -21,8 +21,8 @@ describe "Sheet", type: :system do
     xit "シートが作成後、タスク登録画面へ遷移すること" do
       click_link "New Sheet"
 
-      fill_in "Title", with: "今日やること"
-      click_button "Create Sheet"
+      fill_in "シート名", with: "今日やること"
+      click_button "登録する"
 
       # "シート作成後、すぐにタスク登録画面が表示されること"
       expect(page).to have_selector("h1", text: "New Task")

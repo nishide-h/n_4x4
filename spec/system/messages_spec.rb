@@ -31,16 +31,16 @@ describe "Messages", type: :system do
 
     it "#create 1 task" do
       click_link "New Task"
-      fill_in "Name", with: "タスク1"
-      click_button "Create Task"
+      fill_in "名称", with: "タスク1"
+      click_button "登録する"
 
       expect(page).to have_content("3分以内に全て埋めてしまいましょう！")
     end
 
     it "#create 2 task" do
       click_link "New Task"
-      fill_in "Name", with: "タスク1"
-      click_button "Create Task"
+      fill_in "名称", with: "タスク1"
+      click_button "登録する"
 
       expect(page).to have_content("3分以内に全て埋めてしまいましょう！")
     end
@@ -48,9 +48,8 @@ describe "Messages", type: :system do
     it "#create 10 task" do
       10.times do
         click_link "New Task"
-        fill_in "Name", with: "タスク1"
-      click_button "Create Task"
-
+        fill_in "名称", with: "タスク1"
+        click_button "登録する"
       end
 
       expect(page).to have_content("残り５つ！！")

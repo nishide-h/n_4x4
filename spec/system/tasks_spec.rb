@@ -14,8 +14,8 @@ describe "Tasks", type: :system do
     it "タスクが作成できること" do
       (1..15).each do |i|
         click_link "New Task"
-        fill_in "Name", with: "タスク#{i}"
-        click_button "Create Task"
+        fill_in "名称", with: "タスク#{i}"
+        click_button "登録する"
         expect(page).to have_content "タスク#{i}"
       end
 
