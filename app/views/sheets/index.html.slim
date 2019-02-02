@@ -1,23 +1,22 @@
 / p#notice
 /   = notice
-h1
-  | Sheets
-table
-  thead
+h1 シート一覧
+
+.mb-3
+table.table.table-hover
+  thead.thead-default
     tr
-      th
-        | Title
-      th[colspan="3"]
+      th 名称
+      th 操作
   tbody
     - @sheets.each do |sheet|
       tr
         td
           = sheet.title
         td
-          = link_to 'Show', sheet
-        td
-          = link_to 'Edit', edit_sheet_path(sheet)
-        td
-          = link_to 'Destroy', sheet, method: :delete, data: { confirm: 'Are you sure?' }
+          = link_to "表示", sheet, class: "btn btn-success mr-1"
+          = link_to "編集", edit_sheet_path(sheet), class: "btn btn-warning mr-1"
+          = link_to "削除", sheet, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"
 br
-= link_to 'New Sheet', new_sheet_path
+= link_to "シート作成", new_sheet_path, class: "btn btn-primary"
+

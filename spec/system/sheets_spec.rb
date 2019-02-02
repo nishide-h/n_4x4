@@ -10,7 +10,7 @@ describe "Sheet", type: :system do
     end
 
     it "シートが作成でき、一覧に表示されること" do
-      click_link "New Sheet"
+      click_link "シート作成"
 
       fill_in "シート名", with: "今日やること"
       click_button "登録する"
@@ -19,7 +19,7 @@ describe "Sheet", type: :system do
     end
 
     xit "シートが作成後、タスク登録画面へ遷移すること" do
-      click_link "New Sheet"
+      click_link "シート作成"
 
       fill_in "シート名", with: "今日やること"
       click_button "登録する"

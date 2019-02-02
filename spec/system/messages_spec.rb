@@ -14,7 +14,7 @@ describe "Messages", type: :system do
     end
 
     it "#new comments" do
-      click_link "New Sheet"
+      click_link "シート作成"
 
       expect(page).to have_content("シート名称は「今日やることは？」や「本日タスク」はいかがでしょう？")
     end
