@@ -1,6 +1,5 @@
 h1 シート編集
 = render 'form', sheet: @sheet
-= link_to "表示", @sheet
-|  | 
-= link_to "戻る", sheets_path
+= link_to "表示", @sheet, class: "btn btn-primary mr-1 mt-1"
+= link_to "シート一覧へ", sheets_path, class: "btn btn-secondary mt-1"
 
