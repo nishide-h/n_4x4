@@ -27,10 +27,9 @@ div class="row" style="height: 75vh;" id="sheet_#{@sheet.id}"
       div class="card w-25 h-25 border-success"
         .card-body.text-primary
 
-- if @sheet.tasks.count < 15
-  = link_to 'New Task', new_sheet_task_path(@sheet)
-  |  | 
-= link_to 'Edit', edit_sheet_path(@sheet)
-|  | 
-= link_to 'Back', sheets_path
+div class="btn-group mt-1" role="group" aria-label="基本のボタングループ"
+  - if @sheet.tasks.count < 15
+    = link_to "タスク登録", new_sheet_task_path(@sheet), class: "btn-sm btn-success mr-1"
+  = link_to "シート編集", edit_sheet_path(@sheet), class: "btn-sm btn-warning mr-1"
+  = link_to "戻る", sheets_path, class: "btn-sm btn-secondary"
 

@@ -13,13 +13,13 @@ describe "Tasks", type: :system do
 
     it "タスクが作成できること" do
       (1..15).each do |i|
-        click_link "New Task"
+        click_link "タスク登録"
         fill_in "名称", with: "タスク#{i}"
         click_button "登録する"
         expect(page).to have_content "タスク#{i}"
       end
 
-      expect(page).not_to have_content "New Task"
+      expect(page).not_to have_content "タスク登録"
     end
   end
 
@@ -56,16 +56,7 @@ describe "Tasks", type: :system do
       expect(page).to have_selector(".task.bg-dark", count: 3)
       (all(".task")[10]).click
       expect(page).to have_selector(".task.bg-dark", count: 4)
-
     end
-  end
-
-  describe "メッセージ機能" do
-    context "シート新規作成直後"
-    context "タスク作成中"
-    context "重要選択"
-    context "緊急選択"
-    context "除外選択"
   end
 end
 

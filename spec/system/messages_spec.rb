@@ -30,7 +30,7 @@ describe "Messages", type: :system do
     end
 
     it "#create 1 task" do
-      click_link "New Task"
+      click_link "タスク登録"
       fill_in "名称", with: "タスク1"
       click_button "登録する"
 
@@ -38,7 +38,7 @@ describe "Messages", type: :system do
     end
 
     it "#create 2 task" do
-      click_link "New Task"
+      click_link "タスク登録"
       fill_in "名称", with: "タスク1"
       click_button "登録する"
 
@@ -47,7 +47,7 @@ describe "Messages", type: :system do
 
     it "#create 10 task" do
       10.times do
-        click_link "New Task"
+        click_link "タスク登録"
         fill_in "名称", with: "タスク1"
         click_button "登録する"
       end
