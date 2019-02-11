@@ -13,6 +13,9 @@ $(document).on 'turbolinks:load', ->
     id =  $(this).attr("id").substr(5)
 
     switch radioMode
+      when "0"
+        window.location.href = "/sheets/#{ sheetId }/tasks/#{ id }/edit"
+        return
       when "1"
         # alert "クリック モード: #{ radioMode  } シートID：#{sheetId} タスクID: #{ id } "
         $.ajax(

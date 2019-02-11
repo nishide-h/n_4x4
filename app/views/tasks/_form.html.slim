@@ -1,4 +1,4 @@
-= form_with(model: task, url: sheet_tasks_path, local: true) do |form|
+= form_with(model: task, url: (task.id ? sheet_task_path : sheet_tasks_path), local: true) do |form|
   - if task.errors.any?
     #error_explanation
       h2
@@ -12,5 +12,5 @@
     = form.label :name
     = form.text_field :name
   .actions
-    = form.submit class: "btn btn-primary"
+    = form.submit class: "btn btn-success mr-1"
 

@@ -23,6 +23,21 @@ describe "Tasks", type: :system do
     end
   end
 
+  describe "edit" do
+    before do
+      visit sheet_path(sheet_a)
+
+      click_link "タスク登録"
+      fill_in "名称", with: "edit task"
+      click_button "登録する"
+    end
+
+    it "タスク編集画面へ遷移できること" do
+      (all(".task")[0]).click
+      expect(page).to have_selector "h1", text: "タスク編集"
+    end
+  end
+
   describe "タスクの重要、緊急、不要の選択を行う" do
     before do
       visit sheet_path(sheet_b)
