@@ -34,7 +34,16 @@ describe "Tasks", type: :system do
 
     it "タスク編集画面へ遷移できること" do
       (all(".task")[0]).click
+
       expect(page).to have_selector "h1", text: "タスク編集"
+    end
+
+    it "タスク編集ができること" do
+      (all(".task")[0]).click
+      fill_in "名称", with: "edited task"
+      click_button "更新する"
+
+      expect(page).to have_content "edited task"
     end
   end
 
