@@ -16,5 +16,7 @@ html
       .navbar-custom
         .navbar-text= flash[:notice]
     .container
+      /p.notice= notice
+      p.alert= alert
       = yield
 
