@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  root "sheets#index"
+  root "static_pages#home"
   resources :sheets do
     resources :tasks do
       member do
@@ -12,3 +12,4 @@ Rails.application.routes.draw do
     end
   end
 end
+
