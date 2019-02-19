@@ -15,6 +15,15 @@ html
       .navbar-brand n_4x4
       .navbar-custom
         .navbar-text= flash[:notice]
+      .navbar-nav.ml-auto
+        - if user_signed_in?
+          strong
+            = link_to current_user.email, root_path, class: "mr-2"
+          = link_to 'プロフィール変更', edit_user_registration_path, class: "mr-2"
+          = link_to 'ログアウト', destroy_user_session_path, method: :delete
+        - else
+          = link_to 'サインアップ', new_user_registration_path, class: "mr-2"
+          = link_to 'ログイン', new_user_session_path
     .container
       /p.notice= notice
       p.alert= alert
