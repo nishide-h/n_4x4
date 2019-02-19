@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class SheetsController < ApplicationController
+  before_action :sign_in_required
   before_action :set_sheet, only: [:show, :edit, :update, :destroy]
 
 

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class TasksController < ApplicationController
+  before_action :sign_in_required
   before_action :set_sheet
   before_action :set_task, only: [:show, :edit, :update, :destroy, :toggle_select1, :toggle_select2, :toggle_select3]
 
