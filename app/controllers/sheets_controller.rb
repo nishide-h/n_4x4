@@ -9,7 +9,7 @@ class SheetsController < ApplicationController
 
   def index
     flash[:notice] = "おはようございます！シートを作成して作業を整理しましょう！！"
-    @sheets = Sheet.all
+    @sheets = current_user.sheets
   end
 
   def show
@@ -57,7 +57,7 @@ class SheetsController < ApplicationController
   end
 
   def create
-    @sheet = Sheet.new(sheet_params)
+    @sheet = current_user.sheets.new(sheet_params)
 
     respond_to do |format|
       if @sheet.save
@@ -68,7 +68,7 @@ class SheetsController < ApplicationController
         format.json { render json: @sheet.errors, status: :unprocessable_entity }
       end
     end
-  end
+ end
 
   def update
     respond_to do |format|
@@ -92,10 +92,11 @@ class SheetsController < ApplicationController
 
   private
     def set_sheet
-      @sheet = Sheet.find(params[:id])
+      @sheet = current_user.sheets.find(params[:id])
     end
 
     def sheet_params
       params.require(:sheet).permit(:title)
     end
 end
+
