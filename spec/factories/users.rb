@@ -4,5 +4,11 @@ FactoryBot.define do
     password { "validvalid" }
     password_confirmation { "validvalid" }
   end
+
+  factory :user_b, class: User do
+    email { "user_b@example.com" }
+    password { "useruser" }
+    password_confirmation { "useruser" }
+  end
 end
 

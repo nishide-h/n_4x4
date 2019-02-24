@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :task do
     name { "タスク1" }
-    sheet
+    association :sheet, factory: :valid_sheet
   end
 
   sequence :task_name do |i|

@@ -1,12 +1,62 @@
 require "rails_helper"
 
 describe "Sheet", type: :system do
-  let!(:sheet_a) { FactoryBot.create(:sheet) }
-  let!(:sheet_b) { FactoryBot.create(:sheet_b) }
+  let!(:user_a) { FactoryBot.create(:valid_user) }
+  let!(:user_b) { FactoryBot.create(:valid_user, email: "user_b@example.com") }
+  let!(:sheet_a) { FactoryBot.create(:sheet, title: "シートA", user: user_a) }
+  let!(:sheet_b) { FactoryBot.create(:sheet, title: "シートB",  user: user_b) }
 
-  describe "create" do
+  describe "#index" do
+    context "ユーザーAアカウント" do
+       before do
+        visit new_user_session_path
+        fill_in "Eメール", with: user_a.email
+        fill_in "パスワード", with: user_a.password
+        click_button "Log in"
+      end
+    end
+  end
+
+  describe "#index" do
+    context "ユーザーAアカウント" do
+      before do
+        visit new_user_session_path
+        fill_in "Eメール", with: user_a.email
+        fill_in "パスワード", with: user_a.password
+        click_button "Log in"
+      end
+
+      it "シート一覧が表示されること" do
+        expect(page).to have_content "シートA"
+        expect(page).to have_link "シート作成"
+      end
+    end
+
+    context "ユーザーBアカウント" do
+      before do
+        visit new_user_session_path
+        fill_in "Eメール", with: user_b.email
+        fill_in "パスワード", with: user_b.password
+        click_button "Log in"
+      end
+
+      it "シート一覧が表示されること" do
+        expect(page).to have_content "シートB"
+        expect(page).to have_link "シート作成"
+      end
+
+      it "ユーザーAアカウントのしーとが表示されていないこと" do
+        expect(page).not_to have_content "シートA"
+      end
+    end
+  end
+
+  describe "#create" do
     before do
-      visit root_path
+      visit new_user_session_path
+      fill_in "Eメール", with: user_a.email
+      fill_in "パスワード", with: user_a.password
+      click_button "Log in"
     end
 
     it "シートが作成でき、一覧に表示されること" do
@@ -16,16 +66,6 @@ describe "Sheet", type: :system do
       click_button "登録する"
 
       expect(page).to have_content "今日やること"
-    end
-
-    xit "シートが作成後、タスク登録画面へ遷移すること" do
-      click_link "シート作成"
-
-      fill_in "シート名", with: "今日やること"
-      click_button "登録する"
-
-      # "シート作成後、すぐにタスク登録画面が表示されること"
-      expect(page).to have_selector("h1", text: "New Task")
     end
   end
 end
