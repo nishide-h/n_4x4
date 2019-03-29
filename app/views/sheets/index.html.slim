@@ -7,12 +7,15 @@ table.table.table-hover
   thead.thead-default
     tr
       th 名称
+      th 更新日
       th 操作
   tbody
     - @sheets.each do |sheet|
       tr
         td
           = sheet.title
+        td
+          = sheet.updated_at.strftime('%Y/%m/%d')
         td
           = link_to "表示", sheet, class: "btn btn-success mr-1"
           = link_to "編集", edit_sheet_path(sheet), class: "btn btn-warning mr-1"

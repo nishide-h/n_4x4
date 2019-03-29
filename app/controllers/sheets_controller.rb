@@ -9,7 +9,7 @@ class SheetsController < ApplicationController
 
   def index
     flash[:notice] = "おはようございます！シートを作成して作業を整理しましょう！！"
-    @sheets = current_user.sheets
+    @sheets = current_user.sheets.order(updated_at: "DESC")
   end
 
   def show
