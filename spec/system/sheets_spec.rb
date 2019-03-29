@@ -5,17 +5,7 @@ describe "Sheet", type: :system do
   let!(:user_b) { FactoryBot.create(:valid_user, email: "user_b@example.com") }
   let!(:sheet_a) { FactoryBot.create(:sheet, title: "シートA", user: user_a) }
   let!(:sheet_b) { FactoryBot.create(:sheet, title: "シートB",  user: user_b) }
-
-  describe "#index" do
-    context "ユーザーAアカウント" do
-       before do
-        visit new_user_session_path
-        fill_in "Eメール", with: user_a.email
-        fill_in "パスワード", with: user_a.password
-        click_button "Log in"
-      end
-    end
-  end
+  let!(:sheet_c) { FactoryBot.create(:sheet, title: "シートC", updated_at: Date.today + 1, user: user_a) }
 
   describe "#index" do
     context "ユーザーAアカウント" do
@@ -29,6 +19,11 @@ describe "Sheet", type: :system do
       it "シート一覧が表示されること" do
         expect(page).to have_content "シートA"
         expect(page).to have_link "シート作成"
+      end
+
+      it "更新日でシートが並んでいること" do
+        expect(page).to have_selector "th", text: "更新日" 
+        expect(all("tr td")[0].text).to eq "シートC"
       end
     end
 
