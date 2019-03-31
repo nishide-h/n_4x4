@@ -7,7 +7,7 @@ $(document).on 'turbolinks:load', ->
   else if document.URL.match('/tasks/new')
     $('#task_name').focus()
 
-  $('div.task').on 'click', ->
+  $('div.card').on 'click', ->
     radioMode = $(".radio.active input").val()
     sheetId = $(".row")[1].id.substr(6)
     id =  $(this).attr("id").substr(5)
