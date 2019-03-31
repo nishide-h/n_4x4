@@ -15,7 +15,7 @@ div class="row" style="height: 75vh;" id="sheet_#{@sheet.id}"
         h5= @sheet.created_at.strftime("%Y/%m/%d")
         h4= @sheet.title
   - @sheet.tasks.each_with_index do |task, i|
-      div class="card w-25 h-25 border-success task#{' bg-dark' if task.select3?}" id="task_#{task.id}"
+      div id="task_#{task.id}" class="card w-25 h-25 border-success task#{' bg-dark' if task.select3?}"
         .card-body.text-primary
           .text-center
             = image_tag "flag1.png", class: "select1", id: "task_#{ task.id }_select1" if task.select1?
