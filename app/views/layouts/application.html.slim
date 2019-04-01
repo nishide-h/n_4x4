@@ -12,7 +12,8 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
     .app-title.navbar.navbar-expand-md.navbar-light.bg-light
-      .navbar-brand n_4x4
+      .navbar-brand
+        = link_to image_tag("logo.png", {id: "logo", alt: "logo iamge"}), sheets_path
       .navbar-custom
         .navbar-text= flash[:notice]
       .navbar-nav.ml-auto
