@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "rails_helper"
 
 describe "Tasks", type: :system do
@@ -101,4 +103,3 @@ describe "Tasks", type: :system do
     end
   end
 end
-

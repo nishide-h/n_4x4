@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :valid_user, class: User do
     email { "valid@example.com" }
@@ -11,4 +13,3 @@ FactoryBot.define do
     password_confirmation { "useruser" }
   end
 end
-

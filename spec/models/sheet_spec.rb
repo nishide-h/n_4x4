@@ -1,4 +1,6 @@
-require 'rails_helper'
+# frozen_string_literal: true
+
+require "rails_helper"
 
 RSpec.describe Sheet, type: :model do
   before do
@@ -16,4 +18,3 @@ RSpec.describe Sheet, type: :model do
     expect(@sheet.errors[:title]).to include("を入力してください")
   end
 end
-

@@ -18,7 +18,7 @@ class SheetsController < ApplicationController
 
     if @tasks.size < 15
       @active_mode = 0
-      case @tasks.size 
+      case @tasks.size
       when 1
         flash[:notice] = "3分以内に全て埋めてしまいましょう！"
       when 10
@@ -28,9 +28,9 @@ class SheetsController < ApplicationController
       end
     else
       if @tasks.where(select1: true).size < 3
-        if @tasks.where(select1: true).size == 2 
+        if @tasks.where(select1: true).size == 2
           flash[:notice] = "残りひとつです！！"
-        else 
+        else
           flash[:notice] = "書き上げたタスクを俯瞰して、特に重要なものを３つ選択して下さい。"
         end
         @active_mode = 1
@@ -99,4 +99,3 @@ class SheetsController < ApplicationController
       params.require(:sheet).permit(:title)
     end
 end
-

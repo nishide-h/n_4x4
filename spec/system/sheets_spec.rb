@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "rails_helper"
 
 describe "Sheet", type: :system do
@@ -22,7 +24,7 @@ describe "Sheet", type: :system do
       end
 
       it "更新日でシートが並んでいること" do
-        expect(page).to have_selector "th", text: "更新日" 
+        expect(page).to have_selector "th", text: "更新日"
         expect(all("tr td")[0].text).to eq "シートC"
       end
     end
@@ -64,4 +66,3 @@ describe "Sheet", type: :system do
     end
   end
 end
-

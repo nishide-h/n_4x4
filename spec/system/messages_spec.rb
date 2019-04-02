@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "rails_helper"
 
 describe "Messages", type: :system do
@@ -63,7 +65,7 @@ describe "Messages", type: :system do
         expect(page).to have_content("残り５つ！！")
       end
     end
-  end 
+  end
 
   context "ユーザーBのとき" do
     before do
@@ -105,4 +107,3 @@ describe "Messages", type: :system do
     end
   end
 end
-

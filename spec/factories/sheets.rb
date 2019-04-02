@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :sheet do
     title { "本日タスク" }
@@ -17,4 +19,3 @@ FactoryBot.define do
     end
   end
 end
-

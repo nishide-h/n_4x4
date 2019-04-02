@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddSelectflgToTasks < ActiveRecord::Migration[5.2]
   def change
     add_column :tasks, :select1, :boolean, default: false, null: false

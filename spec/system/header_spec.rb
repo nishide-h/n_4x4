@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "rails_helper"
 
 describe "Header", type: :system do
@@ -32,4 +34,3 @@ describe "Header", type: :system do
     end
   end
 end
-

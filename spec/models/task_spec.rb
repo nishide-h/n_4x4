@@ -1,4 +1,6 @@
-require 'rails_helper'
+# frozen_string_literal: true
+
+require "rails_helper"
 
 RSpec.describe Task, type: :model do
   before do
@@ -16,4 +18,3 @@ RSpec.describe Task, type: :model do
     expect(@task.errors[:name]).to include("can't be blank")
   end
 end
-

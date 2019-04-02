@@ -6,4 +6,3 @@ class Sheet < ApplicationRecord
 
   validates :title, presence: true
 end
-

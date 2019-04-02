@@ -23,14 +23,14 @@ class TasksTest < ApplicationSystemTestCase
   test "creating a Task" do
     visit sheet_url(@sheet)
     click_on "New Task"
-  
+
     fill_in "Name", with: "#{@task.name}2"
     click_on "Create Task"
-  
+
     assert_text "Task was successfully created"
     assert_text "本日タスク"
   end
-  
+
   test "creating a Task to 15 items" do
     visit sheet_url(@sheet)
 
@@ -46,7 +46,7 @@ class TasksTest < ApplicationSystemTestCase
     assert_no_link "New Task"
     assert_no_text "MyString16"
   end
- 
+
   test "重要選択モードでクリック時、選択タスクが更新され画像が表示される" do
     visit sheet_url(@sheet)
 
@@ -56,7 +56,7 @@ class TasksTest < ApplicationSystemTestCase
     assert_text "Task was successfully updated."
     assert find("#task_#{ @task.id }_select1")
   end
-  
+
   # test "すでに登録されていれば、表示で重要アイコンが表示されている" do
   test "重要選択されちるものを再選択で重要アイコンが消えること" do
     visit sheet_url(@sheet)
@@ -84,7 +84,7 @@ class TasksTest < ApplicationSystemTestCase
     assert_text "Task was successfully updated."
     assert find("#task_#{ @task.id }_select2")
   end
-  
+
   # test "すでに登録されていれば、表示で重要アイコンが表示されている" do
   test "緊急選択されちるものを再選択で緊急アイコンが消えること" do
     visit sheet_url(@sheet)
@@ -112,7 +112,7 @@ class TasksTest < ApplicationSystemTestCase
     assert_text "Task was successfully updated."
     assert find("div#task_#{ @task.id }").matches_css?(".exclution")
   end
-  
+
   # test "すでに登録されていれば、表示で重要アイコンが表示されている" do
   test "別日/依頼選択されちるものを再選択で背景色が変わること" do
     visit sheet_url(@sheet)
@@ -128,7 +128,7 @@ class TasksTest < ApplicationSystemTestCase
     sleep 1
     assert find("div#task_#{ @task.id }").not_matches_css?(".exclution")
   end
- 
+
   # test "updating a Task" do
   #   visit tasks_url
   #   click_on "Edit", match: :first

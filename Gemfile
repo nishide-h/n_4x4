@@ -38,7 +38,7 @@ group :development, :test do
   gem "pry-doc"
   gem "factory_bot_rails", "~> 4.11"
   gem "sqlite3"
-  gem 'rubocop', require: false
+  gem "rubocop", require: false
 end
 
 group :development do
@@ -61,4 +61,3 @@ gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 group :production do
   gem "pg"
 end
-

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "rails_helper"
 
 describe "Login", type: :system do
@@ -22,7 +24,7 @@ describe "Login", type: :system do
     end
   end
 
-  describe "ログインできること" do 
+  describe "ログインできること" do
     before do
       visit new_user_session_path
     end
@@ -55,4 +57,3 @@ describe "Login", type: :system do
     end
   end
 end
-

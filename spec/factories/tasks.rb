@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :task do
     name { "タスク1" }
@@ -13,4 +15,3 @@ FactoryBot.define do
     :sheet_b
   end
 end
-
