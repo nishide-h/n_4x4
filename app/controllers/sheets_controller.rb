@@ -14,7 +14,7 @@ class SheetsController < ApplicationController
 
   def show
     @mode = MODE
-    @tasks = @sheet.tasks
+    @tasks = @sheet.tasks.order(:created_at)
 
     if @tasks.size < 15
       @active_mode = 0
