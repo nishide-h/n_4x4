@@ -30,6 +30,10 @@ describe "Tasks", type: :system do
         end
 
         expect(page).not_to have_content "タスク登録"
+
+        cards_title = all(".card-title").map(&:text)
+        cards_title.delete_at(0)
+        expect(cards_title).to eq ["タスク1", "タスク2", "タスク3", "タスク4", "タスク5", "タスク6", "タスク7", "タスク8", "タスク9", "タスク10", "タスク11", "タスク12", "タスク13", "タスク14", "タスク15"]
       end
     end
 
@@ -38,22 +42,29 @@ describe "Tasks", type: :system do
         visit sheet_path(sheet_a)
 
         click_link "タスク登録"
+        fill_in "名称", with: "task1"
+        click_button "登録する"
+        click_link "タスク登録"
         fill_in "名称", with: "edit task"
         click_button "登録する"
       end
 
       it "タスク編集画面へ遷移できること" do
-        (all(".task")[0]).click
+        (all(".task")[1]).click
 
         expect(page).to have_selector "h1", text: "タスク編集"
       end
 
       it "タスク編集ができること" do
-        (all(".task")[0]).click
+        (all(".task")[1]).click
         fill_in "名称", with: "edited task"
         click_button "更新する"
 
         expect(page).to have_content "edited task"
+
+        cards_title = all(".card-title").map(&:text)
+        cards_title.delete_at(0)
+        expect(cards_title).to eq ["task1", "edited task"]
       end
     end
   end
