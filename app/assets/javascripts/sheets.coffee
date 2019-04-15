@@ -2,12 +2,12 @@
 
 $(document).on 'turbolinks:load', ->
   path = location.pathname
-  if document.URL.match(/\/sheets\/\d+$/)
+  if document.URL.match('/tasks/new')
+    $('#task_name').focus()
+  else if document.URL.match(/\/sheets\/\d+$/)
     $('a.btn-success').focus()
   else if document.URL.match('/sheets')
     $('.btn-primary').focus()
-  else if document.URL.match('/tasks/new')
-    $('#task_name').focus()
   
   $('div.card').on 'click', ->
     radioMode = $(".radio.active input").val()
