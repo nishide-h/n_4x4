@@ -31,6 +31,7 @@ gem "html2slim"
 gem "bootstrap", "~> 4.3.1"
 gem "devise"
 gem "awesome_print"
+gem "webpacker"
 
 group :development, :test do
   # gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
