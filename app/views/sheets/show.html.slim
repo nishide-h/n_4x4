@@ -14,7 +14,7 @@ div class="row" style="height: 75vh;" id="sheet_#{@sheet.id}"
       .card-title
         h5= @sheet.created_at.strftime("%Y/%m/%d")
         h4= @sheet.title
-  - @sheet.tasks.each_with_index do |task, i|
+  - @tasks.each_with_index do |task, i|
       div id="task_#{task.id}" class="card w-25 h-25 border-success task#{' bg-dark' if task.select3?}"
         .card-body.text-primary
           .text-center
@@ -23,12 +23,12 @@ div class="row" style="height: 75vh;" id="sheet_#{@sheet.id}"
           .card-img-overlay
             .card-title
               h5= task.name
-  - (15 - @sheet.tasks.size).times do
+  - (15 - @tasks.size).times do
       div class="card w-25 h-25 border-success"
         .card-body.text-primary
 
 div class="btn-group mt-1" role="group" aria-label="基本のボタングループ"
-  - if @sheet.tasks.count < 15
+  - if @tasks.count < 15
     = link_to "タスク登録", new_sheet_task_path(@sheet), class: "btn-sm btn-success mr-1"
   = link_to "シート編集", edit_sheet_path(@sheet), class: "btn-sm btn-warning mr-1"
   = link_to "戻る", sheets_path, class: "btn-sm btn-secondary"
