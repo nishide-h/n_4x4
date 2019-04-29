@@ -2,7 +2,9 @@
 
 $(document).on 'turbolinks:load', ->
   path = location.pathname
-  if document.URL.match('/tasks/new')
+  if document.URL.match('/sheets/new')
+    $('#sheet_title').focus()
+  else if document.URL.match('/tasks/new')
     $('#task_name').focus()
   else if document.URL.match(/\/sheets\/\d+$/)
     $('a.btn-success').focus()
