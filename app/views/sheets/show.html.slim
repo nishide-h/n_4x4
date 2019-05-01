@@ -7,6 +7,8 @@
       div class="label btn btn-secondary radio #{"active" if @active_mode == i}" 
         = radio_button("page", :mode, i, checked: true, autocomplete: false)
         | #{ mode }
+  #app
+    status_mode
 
 div class="row" style="height: 75vh;" id="sheet_#{@sheet.id}"
   .header.card.w-25.h-25.border-success
@@ -32,4 +34,7 @@ div class="btn-group mt-1" role="group" aria-label="基本のボタングルー�
     = link_to "タスク登録", new_sheet_task_path(@sheet), class: "btn-sm btn-success mr-1"
   = link_to "シート編集", edit_sheet_path(@sheet), class: "btn-sm btn-warning mr-1"
   = link_to "戻る", sheets_path, class: "btn-sm btn-secondary"
+
+= javascript_pack_tag 'status_vue'
+= stylesheet_pack_tag 'status_vue'
 
