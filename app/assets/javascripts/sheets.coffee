@@ -14,6 +14,8 @@ $(document).on 'turbolinks:load', ->
   $('div.card').on 'click', ->
     radioMode = $(".radio.active input").val()
     sheetId = $(".row")[1].id.substr(6)
+    if typeof $(this).attr("id") == "undefined" 
+      return
     id =  $(this).attr("id").substr(5)
 
     switch radioMode
