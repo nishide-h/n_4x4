@@ -1,9 +1,8 @@
 = form_with(model: task, url: (task.id ? sheet_task_path : sheet_tasks_path), local: true) do |form|
   - if task.errors.any?
-    #error_explanation
+    #error_explanation.alert.alert-danger
       h2
-        = pluralize(task.errors.count, "error")
-        |  prohibited this task from being saved:
+        = "入力した内容にエラーが #{ pluralize(task.errors.count, "件") }あります"
       ul
         - task.errors.full_messages.each do |message|
           li

@@ -1,9 +1,8 @@
 = form_with(model: sheet, local: true) do |form|
   - if sheet.errors.any?
-    #error_explanation
+    #error_explanation.alert.alert-danger
       h2
-        = pluralize(sheet.errors.count, "error")
-        |  prohibited this sheet from being saved:
+        = "入力した内容にエラーが #{ pluralize(sheet.errors.count, "件") }あります"
       ul
         - sheet.errors.full_messages.each do |message|
           li
@@ -13,3 +12,4 @@
     = form.text_field :title
   .actions
     = form.submit class: "btn btn-success mr-1"
+
