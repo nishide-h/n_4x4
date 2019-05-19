@@ -26,6 +26,7 @@ gem "jquery-rails"
 
 gem "bootsnap", ">= 1.1.0", require: false
 
+gem "rails-i18n"
 gem "slim-rails"
 gem "html2slim"
 gem "bootstrap", "~> 4.3.1"
