@@ -79,6 +79,9 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.5)
     crass (1.0.4)
+    debase (0.2.2)
+      debase-ruby_core_source (>= 0.10.2)
+    debase-ruby_core_source (0.10.4)
     devise (4.6.2)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -217,6 +220,8 @@ GEM
       rainbow (>= 2.2.2, < 4.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 1.6)
+    ruby-debug-ide (0.6.1)
+      rake (>= 0.8.1)
     ruby-progressbar (1.10.0)
     ruby_dep (1.5.0)
     rubyzip (1.2.2)
@@ -296,6 +301,7 @@ DEPENDENCIES
   bootstrap (~> 4.3.1)
   capybara (>= 2.15, < 4.0)
   coffee-rails (~> 4.2)
+  debase
   devise
   factory_bot_rails (~> 4.11)
   html2slim
@@ -311,6 +317,7 @@ DEPENDENCIES
   rails-i18n
   rspec-rails (~> 3.7)
   rubocop
+  ruby-debug-ide
   sassc-rails
   selenium-webdriver
   slim-rails

@@ -26,6 +26,9 @@ gem "jquery-rails"
 
 gem "bootsnap", ">= 1.1.0", require: false
 
+gem "ruby-debug-ide"
+gem "debase"
+
 gem "rails-i18n"
 gem "slim-rails"
 gem "html2slim"
