@@ -1,5 +1,13 @@
 ---
 ja:
+  enums:
+    sheet:
+      status:
+        make_task: "タスク登録"
+        select_1: "選択-重要"
+        select_2: "選択-緊急"
+        select_3: "選択-別日/依頼"
+        finished: "完成"
   activerecord:
     errors:
       messages:
