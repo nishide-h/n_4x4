@@ -36,6 +36,7 @@ gem "bootstrap", "~> 4.3.1"
 gem "devise"
 gem "awesome_print"
 gem "webpacker"
+gem "enum_help"
 
 group :development, :test do
   # gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
