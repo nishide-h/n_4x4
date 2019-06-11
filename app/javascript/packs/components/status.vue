@@ -1,6 +1,8 @@
 <template>
   <div>
-    <label>モード：{{ mode }}</label>
+    <h1>
+      <span class="badge  badge-info">モード：{{ mode }}</span>
+    </h1>
   </div>
 </template>
 <script>

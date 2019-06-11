@@ -1,14 +1,8 @@
-/ p#notice
-/   = notice
-
 .row
-  div class="btn-group btn-group-toggle" data-toggle="buttons"
-    - @mode.each_with_index do |mode, i|
-      div class="label btn btn-secondary radio #{"active" if @active_mode == i}" 
-        = radio_button("page", :mode, i, checked: true, autocomplete: false)
-        | #{ mode }
   #app
-    status_mode
+  
+  h3
+    span.badge.badge-info モード：#{ @sheet.status_i18n }
 
 div class="row" style="height: 75vh;" id="sheet_#{@sheet.id}"
   .header.card.w-25.h-25.border-success
