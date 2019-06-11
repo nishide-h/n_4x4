@@ -4,16 +4,12 @@ class SheetsController < ApplicationController
   before_action :sign_in_required
   before_action :set_sheet, only: [:show, :edit, :update, :destroy]
 
-
-  MODE = ["登録＞", "選択-重要＞", "選択-緊急＞", "選択-別日/依頼"]
-
   def index
     flash[:notice] = "おはようございます！シートを作成して作業を整理しましょう！！"
     @sheets = current_user.sheets.order(updated_at: "DESC")
   end
 
   def show
-    @mode = MODE
     @tasks = @sheet.tasks.order(:created_at)
 
     if @tasks.size < 15
