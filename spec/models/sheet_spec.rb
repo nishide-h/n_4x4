@@ -17,4 +17,14 @@ RSpec.describe Sheet, type: :model do
 
     expect(@sheet.errors[:title]).to include("を入力してください")
   end
+
+  it "is valid when exist status parameter" do
+    @sheet.status = 1
+    expect(@sheet).to be_valid
+  end
+
+  it "raise Error when not exist status value" do
+    expect{ @sheet.status = 10 }.to raise_error(ArgumentError)
+  end
 end
+
