@@ -4,6 +4,10 @@ Rails.application.routes.draw do
   devise_for :users
   root "static_pages#home"
   resources :sheets do
+    member do
+      patch "next_status"
+    end
+
     resources :tasks do
       member do
         patch "toggle_select1"

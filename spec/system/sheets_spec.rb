@@ -65,4 +65,21 @@ describe "Sheet", type: :system do
       expect(page).to have_content "今日やること"
     end
   end
+
+  describe "#next_status" do
+    before do
+      visit new_user_session_path
+      fill_in "Eメール", with: user_a.email
+      fill_in "パスワード", with: user_a.password
+      click_button "Log in"
+      visit sheet_path(sheet_a)
+    end
+
+    it ">ボタンクリックで次のステータスへ更新されること" do
+      expect(page).to have_content "タスク登録"
+      click_link ">"
+
+      expect(page).to have_content "選択-重要"
+    end
+  end
 end
