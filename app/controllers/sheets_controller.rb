@@ -2,7 +2,7 @@
 
 class SheetsController < ApplicationController
   before_action :sign_in_required
-  before_action :set_sheet, only: [:show, :edit, :update, :next_status, :destroy]
+  before_action :set_sheet, only: [:show, :edit, :update, :next_status, :prev_status, :destroy]
 
   def index
     flash[:notice] = "おはようございます！シートを作成して作業を整理しましょう！！"
@@ -80,6 +80,19 @@ class SheetsController < ApplicationController
 
   def next_status
     @sheet.status = @sheet.status_before_type_cast + 1
+    respond_to do |format|
+      if @sheet.save
+        format.html { redirect_to @sheet, notice: "Sheet was successfully updated." }
+        format.json { render :show, status: :ok, location: @sheet }
+      else
+        format.html { render :show }
+        format.json { render json: @sheet.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def prev_status
+    @sheet.status = @sheet.status_before_type_cast - 1
     respond_to do |format|
       if @sheet.save
         format.html { redirect_to @sheet, notice: "Sheet was successfully updated." }

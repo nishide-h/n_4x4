@@ -1,7 +1,8 @@
 .row
   #app
-  
+
   h3
+    = link_to "<", prev_status_sheet_path(@sheet), method: :patch, class: "btn btn-primary py-0 m-2"
     span.badge.badge-info モード：#{ @sheet.status_i18n }
     = link_to ">", next_status_sheet_path(@sheet), method: :patch, class: "btn btn-primary py-0 m-2"
 
@@ -32,4 +33,3 @@ div class="btn-group mt-1" role="group" aria-label="基本のボタングルー�
 
 = javascript_pack_tag 'status_vue'
 = stylesheet_pack_tag 'status_vue'
-

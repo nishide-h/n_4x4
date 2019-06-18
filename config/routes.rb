@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :sheets do
     member do
       patch "next_status"
+      patch "prev_status"
     end
 
     resources :tasks do

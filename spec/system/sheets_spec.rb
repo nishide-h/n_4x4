@@ -8,6 +8,7 @@ describe "Sheet", type: :system do
   let!(:sheet_a) { FactoryBot.create(:sheet, title: "シートA", user: user_a) }
   let!(:sheet_b) { FactoryBot.create(:sheet, title: "シートB",  user: user_b) }
   let!(:sheet_c) { FactoryBot.create(:sheet, title: "シートC", updated_at: Date.today + 1, user: user_a) }
+  let!(:sheet_prev) { FactoryBot.create(:sheet, title: "前へシート", status: "select_1", user: user_a) }
 
   describe "#index" do
     context "ユーザーAアカウント" do
@@ -80,6 +81,23 @@ describe "Sheet", type: :system do
       click_link ">"
 
       expect(page).to have_content "選択-重要"
+    end
+  end
+
+  describe "#prev_status" do
+    before do
+      visit new_user_session_path
+      fill_in "Eメール", with: user_a.email
+      fill_in "パスワード", with: user_a.password
+      click_button "Log in"
+      visit sheet_path(sheet_prev)
+    end
+
+    it ">ボタンクリックで次のステータスへ更新されること" do
+      expect(page).to have_content "選択-重要"
+      click_link "<"
+
+      expect(page).to have_content "タスク登録"
     end
   end
 end
