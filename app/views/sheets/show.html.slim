@@ -2,9 +2,11 @@
   #app
 
   h3
-    = link_to "<", prev_status_sheet_path(@sheet), method: :patch, class: "btn btn-primary py-0 m-2"
+    - unless @sheet.make_task?
+      = link_to "<", prev_status_sheet_path(@sheet), method: :patch, class: "btn btn-primary py-0 m-2"
     span.badge.badge-info モード：#{ @sheet.status_i18n }
-    = link_to ">", next_status_sheet_path(@sheet), method: :patch, class: "btn btn-primary py-0 m-2"
+    - unless @sheet.finished?
+      = link_to ">", next_status_sheet_path(@sheet), method: :patch, class: "btn btn-primary py-0 m-2"
 
 div class="row" style="height: 75vh;" id="sheet_#{@sheet.id}"
   .header.card.w-25.h-25.border-success

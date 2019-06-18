@@ -8,7 +8,7 @@ describe "Sheet", type: :system do
   let!(:sheet_a) { FactoryBot.create(:sheet, title: "シートA", user: user_a) }
   let!(:sheet_b) { FactoryBot.create(:sheet, title: "シートB",  user: user_b) }
   let!(:sheet_c) { FactoryBot.create(:sheet, title: "シートC", updated_at: Date.today + 1, user: user_a) }
-  let!(:sheet_prev) { FactoryBot.create(:sheet, title: "前へシート", status: "select_1", user: user_a) }
+  let!(:sheet_prev) { FactoryBot.create(:sheet, title: "前へシート", status: "finished", user: user_a) }
 
   describe "#index" do
     context "ユーザーAアカウント" do
@@ -76,6 +76,10 @@ describe "Sheet", type: :system do
       visit sheet_path(sheet_a)
     end
 
+    it "タスク登録時、モード戻るボタンが表示されていないこと" do
+      expect(page).not_to have_link "<"
+    end
+
     it ">ボタンクリックで次のステータスへ更新されること" do
       expect(page).to have_content "タスク登録"
       click_link ">"
@@ -93,11 +97,15 @@ describe "Sheet", type: :system do
       visit sheet_path(sheet_prev)
     end
 
+    it "タスク登録時、次のモードへ遷移するボタンが表示されていないこと" do
+      expect(page).not_to have_link ">"
+    end
+
     it ">ボタンクリックで次のステータスへ更新されること" do
-      expect(page).to have_content "選択-重要"
+      expect(page).to have_content "完成"
       click_link "<"
 
-      expect(page).to have_content "タスク登録"
+      expect(page).to have_content "選択-別日/依頼"
     end
   end
 end
