@@ -22,7 +22,7 @@ $(document).on 'turbolinks:load', ->
       when "タスク登録"
         window.location.href = "/sheets/#{ sheetId }/tasks/#{ id }/edit"
         return
-      when "1"
+      when "重要タスク選択"
         # alert "クリック モード: #{ radioMode  } シートID：#{sheetId} タスクID: #{ id } "
         $.ajax(
           url: "/sheets/#{ sheetId }/tasks/#{ id }/toggle_select1"
@@ -35,7 +35,7 @@ $(document).on 'turbolinks:load', ->
           # Railsのアクションなどでエラーが発生した時の処理
           return
         return
-      when "2"
+      when "緊急タスク選択"
         $.ajax(
           url: "/sheets/#{ sheetId }/tasks/#{ id }/toggle_select2"
           type: "PATCH"
@@ -45,7 +45,7 @@ $(document).on 'turbolinks:load', ->
         ).fail (xhr) ->
           return
         return
-      when "3"
+      when "別日/依頼タスク選択"
         $.ajax(
           url: "/sheets/#{ sheetId }/tasks/#{ id }/toggle_select3"
           type: "PATCH"
