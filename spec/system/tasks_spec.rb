@@ -29,7 +29,7 @@ describe "Tasks", type: :system do
           expect(page).to have_content "タスク#{i}"
         end
 
-        expect(page).not_to have_content "タスク登録"
+        expect(page).not_to have_link "タスク登録"
 
         cards_title = all(".card-title").map(&:text)
         cards_title.delete_at(0)
