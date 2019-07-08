@@ -12,14 +12,14 @@ $(document).on 'turbolinks:load', ->
     $('.btn-primary').focus()
   
   $('div.card').on 'click', ->
-    radioMode = $(".radio.active input").val()
+    sheetStatus = $(".badge.badge-info").text() 
     sheetId = $(".row")[1].id.substr(6)
     if typeof $(this).attr("id") == "undefined" 
       return
     id =  $(this).attr("id").substr(5)
 
-    switch radioMode
-      when "0"
+    switch sheetStatus
+      when "タスク登録"
         window.location.href = "/sheets/#{ sheetId }/tasks/#{ id }/edit"
         return
       when "1"

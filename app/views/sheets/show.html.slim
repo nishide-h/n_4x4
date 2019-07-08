@@ -4,7 +4,7 @@
   h3
     - unless @sheet.make_task?
       = link_to "<", prev_status_sheet_path(@sheet), method: :patch, class: "btn btn-primary py-0 m-2"
-    span.badge.badge-info モード：#{ @sheet.status_i18n }
+    span.badge.badge-info #{ @sheet.status_i18n }
     - unless @sheet.finished?
       = link_to ">", next_status_sheet_path(@sheet), method: :patch, class: "btn btn-primary py-0 m-2"
 
