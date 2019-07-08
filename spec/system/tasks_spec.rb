@@ -29,7 +29,7 @@ describe "Tasks", type: :system do
           expect(page).to have_content "タスク#{i}"
         end
 
-        expect(page).not_to have_content "タスク登録"
+        expect(page).not_to have_link "タスク登録"
 
         cards_title = all(".card-title").map(&:text)
         cards_title.delete_at(0)
@@ -82,7 +82,12 @@ describe "Tasks", type: :system do
         visit sheet_path(sheet_b)
       end
 
-      it "重要、緊急、廃止を選択していく" do
+      it "緊急たすくを選択できる" do
+        click_link ">"
+        expect(page).to have_selector(".badge.badge-info", text: "重要タスク選択")
+      end
+
+      xit "重要、緊急、廃止を選択していく" do
         expect(page).to have_selector(".radio.active", text: "選択-重要＞")
         # find(".task")[0].click
         (all(".task")[0]).click

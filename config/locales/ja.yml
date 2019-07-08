@@ -4,9 +4,9 @@ ja:
     sheet:
       status:
         make_task: "タスク登録"
-        select_1: "選択-重要"
-        select_2: "選択-緊急"
-        select_3: "選択-別日/依頼"
+        select_1: "重要タスク選択"
+        select_2: "緊急タスク選択"
+        select_3: "別日/依頼タスク選択"
         finished: "完成"
   activerecord:
     errors:
