@@ -82,39 +82,31 @@ describe "Tasks", type: :system do
         visit sheet_path(sheet_b)
       end
 
-      it "緊急たすくを選択できる" do
+      it "重要タスクを選択できる" do
         click_link ">"
         expect(page).to have_selector(".badge.badge-info", text: "重要タスク選択")
+
+        (all(".task")[0]).click
+        expect(page).to have_selector("img.select1", count: 1)
       end
 
-      xit "重要、緊急、廃止を選択していく" do
-        expect(page).to have_selector(".radio.active", text: "選択-重要＞")
-        # find(".task")[0].click
-        (all(".task")[0]).click
-        # expect(page).to have_selector("img#task_1_select1")
-        expect(page).to have_selector("img.select1", count: 1)
-        (all(".task")[1]).click
-        expect(page).to have_selector("img.select1", count: 2)
-        (all(".task")[2]).click
-        expect(page).to have_selector("img.select1", count: 3)
+      it "緊急タスクを選択できる" do
+        click_link ">"
+        click_link ">"
+        expect(page).to have_selector(".badge.badge-info", text: "緊急タスク選択")
 
-        expect(page).to have_selector(".radio.active", text: "選択-緊急＞")
         (all(".task")[3]).click
         expect(page).to have_selector("img.select2", count: 1)
-        (all(".task")[4]).click
-        expect(page).to have_selector("img.select2", count: 2)
-        (all(".task")[5]).click
-        expect(page).to have_selector("img.select2", count: 3)
+      end
 
-        expect(page).to have_selector(".radio.active", text: "選択-別日/依頼")
+      it "別日/依頼タスクを選択できる" do
+        click_link ">"
+        click_link ">"
+        click_link ">"
+        expect(page).to have_selector(".badge.badge-info", text: "別日/依頼タスク選択")
+
         (all(".task")[7]).click
         expect(page).to have_selector(".task.bg-dark", count: 1)
-        (all(".task")[8]).click
-        expect(page).to have_selector(".task.bg-dark", count: 2)
-        (all(".task")[9]).click
-        expect(page).to have_selector(".task.bg-dark", count: 3)
-        (all(".task")[10]).click
-        expect(page).to have_selector(".task.bg-dark", count: 4)
       end
     end
   end
