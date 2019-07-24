@@ -12,7 +12,7 @@ $(document).on 'turbolinks:load', ->
     $('.btn-primary').focus()
   
   $('div.card').on 'click', ->
-    sheetStatus = $(".badge.badge-info").text() 
+    sheetStatus = $(".border.border-info").text() 
     sheetId = $(".row")[1].id.substr(6)
     if typeof $(this).attr("id") == "undefined" 
       return
