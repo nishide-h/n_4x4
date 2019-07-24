@@ -1,6 +1,11 @@
 / p#notice
 /   = notice
-h1 シート一覧
+.row
+  h1 シート一覧
+.row
+  div class="btn mt-1"
+    = link_to "シート作成", new_sheet_path, class: "btn btn-primary"
+    span.notice.pl-1= notice
 
 .mb-3
 table.table.table-hover
@@ -21,5 +26,4 @@ table.table.table-hover
           = link_to "編集", edit_sheet_path(sheet), class: "btn btn-warning mr-1"
           = link_to "削除", sheet, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"
 br
-= link_to "シート作成", new_sheet_path, class: "btn btn-primary"
 

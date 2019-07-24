@@ -4,9 +4,14 @@
   h3
     - unless @sheet.make_task?
       = link_to "<", prev_status_sheet_path(@sheet), method: :patch, class: "btn btn-primary py-0 m-2"
-    span.badge.badge-info #{ @sheet.status_i18n }
+    span.border.border-info.bg-light.text-info.px-1.align-middle #{ @sheet.status_i18n }
     - unless @sheet.finished?
       = link_to ">", next_status_sheet_path(@sheet), method: :patch, class: "btn btn-primary py-0 m-2"
+    div class="btn-group mt-1" role="group" aria-label="基本のボタングループ"
+      - if @tasks.count < 15
+        = link_to "タスク登録", new_sheet_task_path(@sheet), class: "btn-sm btn-success mr-1"
+      = link_to "シート編集", edit_sheet_path(@sheet), class: "btn-sm btn-warning mr-1"
+      = link_to "戻る", sheets_path, class: "btn-sm btn-secondary"
 
 div class="row" style="height: 75vh;" id="sheet_#{@sheet.id}"
   .header.card.w-25.h-25.border-success
@@ -26,12 +31,6 @@ div class="row" style="height: 75vh;" id="sheet_#{@sheet.id}"
   - (15 - @tasks.size).times do
       div class="card w-25 h-25 border-success"
         .card-body.text-primary
-
-div class="btn-group mt-1" role="group" aria-label="基本のボタングループ"
-  - if @tasks.count < 15
-    = link_to "タスク登録", new_sheet_task_path(@sheet), class: "btn-sm btn-success mr-1"
-  = link_to "シート編集", edit_sheet_path(@sheet), class: "btn-sm btn-warning mr-1"
-  = link_to "戻る", sheets_path, class: "btn-sm btn-secondary"
 
 = javascript_pack_tag 'status_vue'
 = stylesheet_pack_tag 'status_vue'
