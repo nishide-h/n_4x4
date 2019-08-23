@@ -49,6 +49,22 @@ describe "Sheet", type: :system do
     end
   end
 
+  describe "#index paging" do
+    before do
+      100.times { |i| user_a.sheets.create!(title: "ページングテスト#{i}") } # for paging test
+
+      visit new_user_session_path
+      fill_in "Eメール", with: user_a.email
+      fill_in "パスワード", with: user_a.password
+      click_button "Log in"
+    end
+
+    it "ページングで25件まで表示されること" do
+      expect(page).to have_content "25件のシートが表示されています"
+      expect(all("tbody tr").count).to eq 25
+    end
+  end
+
   describe "#create" do
     before do
       visit new_user_session_path
