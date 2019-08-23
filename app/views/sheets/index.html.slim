@@ -8,6 +8,8 @@
     span.notice.pl-1= notice
 
 .mb-3
+  = paginate @sheets
+  = page_entries_info @sheets
 table.table.table-hover
   thead.thead-default
     tr

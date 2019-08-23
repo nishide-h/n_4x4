@@ -29,6 +29,13 @@ ja:
         name: 名称
         created_at: 作成日時
         updated_at: 更新日時
+  views:
+    pagination:
+      first: "&laquo; 最初"
+      last: "最後 &raquo;"
+      previous: "&laquo; 前"
+      next: "次 &raquo;"
+      truncate: "&hellip;"
   date:
     abbr_day_names:
     - 日
@@ -167,6 +174,14 @@ ja:
       create: 登録する
       submit: 保存する
       update: 更新する
+    page_entries_info:
+      one_page:
+        display_entries:
+          zero: "%{entry_name}がありません"
+          one: "1件の%{ entry_name }が表示されています"
+          other: "%{count}件の%{entry_name}が表示されています"
+      more_pages:
+        display_entries: "全%{total}件中 %{first}&nbsp;-&nbsp;%{last}件の%{entry_name}が表示されています"
   number:
     currency:
       format:
