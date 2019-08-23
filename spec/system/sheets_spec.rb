@@ -100,7 +100,7 @@ describe "Sheet", type: :system do
       expect(page).to have_content "タスク登録"
       click_link ">"
 
-      expect(page).to have_content "選択-重要"
+      expect(page).to have_content "重要タスク選択"
     end
   end
 
@@ -121,7 +121,7 @@ describe "Sheet", type: :system do
       expect(page).to have_content "完成"
       click_link "<"
 
-      expect(page).to have_content "選択-別日/依頼"
+      expect(page).to have_content "別日/依頼タスク選択"
     end
   end
 end
