@@ -12,6 +12,7 @@
         = link_to "タスク登録", new_sheet_task_path(@sheet), class: "btn-sm btn-success mr-1"
       = link_to "シート編集", edit_sheet_path(@sheet), class: "btn-sm btn-warning mr-1"
       = link_to "戻る", sheets_path, class: "btn-sm btn-secondary"
+  span.text-info.px-1.align-middle #{ Message.new(@sheet).detail }
 
 div class="row" style="height: 75vh;" id="sheet_#{@sheet.id}"
   .header.card.w-25.h-25.border-success
