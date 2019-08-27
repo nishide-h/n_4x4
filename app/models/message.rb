@@ -7,15 +7,27 @@ class Message
   end
 
   def detail
-    case @sheet.tasks.count
-    when 0
-      "次々空欄を埋めて行きましょう！！優先順位を決めるのは全て埋めてから。"
-    when 10
-      ""
-    when 14
-      ""
-    else
-      ""
+    task_count = @sheet.tasks.count
+
+    if @sheet.make_task?
+      if task_count < 10
+        return "次々空欄を埋めて行きましょう！！優先順位を決めるのは全て埋めてから。"
+      end
+
+      if task_count < 15
+        return "残り#{ 15 - task_count.to_i }つ！！"
+      end
     end
+    
+    # case @sheet.tasks.count
+    # when 0
+    # when 10
+    #   ""
+    # when 14
+    #   ""
+    # else
+    #   # ""
+    #   "次々空欄を埋めて行きましょう！！優先順位を決めるのは全て埋めてから。"
+    # end
   end
 end
