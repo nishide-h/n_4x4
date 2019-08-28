@@ -83,7 +83,7 @@ RSpec.describe Message, type: :model do
     it "select3 description" do
       target = Message.new(@sheet)
 
-      expect(target.detail).to eq "もう一度見渡して、人に頼めるものや今日する必要のないタスクを選択して下さい。個数制限なし選択が終われば完成ボタンを押して下さい。"
+      expect(target.detail).to eq "もう一度見渡して、人に頼めるものや今日する必要のないタスクを選択して下さい。"
     end
   end
 end
