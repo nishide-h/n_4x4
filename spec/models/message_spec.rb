@@ -86,5 +86,18 @@ RSpec.describe Message, type: :model do
       expect(target.detail).to eq "もう一度見渡して、人に頼めるものや今日する必要のないタスクを選択して下さい。"
     end
   end
+
+  context "完了時" do
+    before do
+      15.times { |i| @sheet.tasks.create!(name: "タスクテスト#{i}") }
+      @sheet.status = Sheet.statuses[:finished]
+    end
+
+    it "finished description" do
+      target = Message.new(@sheet)
+
+      expect(target.detail).to eq "これでシート完成です！！タスクをスケジュールに登録しましょう。"
+    end
+  end
 end
 

@@ -50,6 +50,10 @@ class Message
     if @sheet.select_3?
       return "もう一度見渡して、人に頼めるものや今日する必要のないタスクを選択して下さい。"
     end
+
+    if @sheet.finished?
+      return "これでシート完成です！！タスクをスケジュールに登録しましょう。"
+    end
   end
 end
 
