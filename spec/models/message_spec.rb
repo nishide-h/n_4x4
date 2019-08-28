@@ -14,17 +14,23 @@ RSpec.describe Message, type: :model do
 
     it "空タスク時" do
       a = Message.new(@sheet)
+
       expect(a.detail).to eq "次々空欄を埋めて行きましょう！！優先順位を決めるのは全て埋めてから。"
     end
 
-    it "タスクを10個登録時" do
+    it "when created first task" do
+      @sheet.tasks.create!(name: "タスク１つ目")
+      a = Message.new(@sheet)
+
+      expect(a.detail).to eq "3分以内に全て埋めてしまいましょう！"
+    end
+
+    it "when created 10 tasks" do
       10.times { |i| @sheet.tasks.create!(name: "タスクテスト#{i}") }
       a = Message.new(@sheet)
 
       expect(a.detail).to eq "残り5つ！！"
     end
-    it "タスクを12個登録時"
-    it "タスクを14個登録時"
 
     xit "is invalid without name" do
       @task.name = nil
