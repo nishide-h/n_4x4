@@ -7,7 +7,7 @@ class Message
   end
 
   def detail
-    task_count = @sheet.tasks.count
+    task_count = @sheet.tasks.size
 
     if @sheet.make_task?
       if task_count == 1
@@ -22,5 +22,34 @@ class Message
         return "残り#{ 15 - task_count.to_i }つ！！"
       end
     end
+
+    if @sheet.select_1?
+      select1_count = @sheet.tasks.where(select1: :true).size
+      
+      if select1_count == 0
+        return "書き上げたタスクを俯瞰して、特に重要なものを３つ選択して下さい。"
+      end
+
+      if select1_count == 2
+        return "残りひとつです！！"
+      end
+    end
+
+    if @sheet.select_2?
+      select2_count = @sheet.tasks.where(select2: :true).size
+      
+      if select2_count == 0
+        return "再び全体を見渡して、緊急性の高いものを３つ選択して下さい。重要と被ってもOK"
+      end
+
+      if select2_count == 2
+        return "残りひとつです！！"
+      end
+    end
+
+    if @sheet.select_3?
+      return "もう一度見渡して、人に頼めるものや今日する必要のないタスクを選択して下さい。個数制限なし選択が終われば完成ボタンを押して下さい。"
+    end
   end
 end
+

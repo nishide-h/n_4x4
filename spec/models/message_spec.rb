@@ -31,14 +31,60 @@ RSpec.describe Message, type: :model do
 
       expect(a.detail).to eq "残り5つ！！"
     end
+  end
 
-    xit "is invalid without name" do
-      @task.name = nil
-      @task.valid?
+  context "重要タスク選択時" do
+    before do
+      15.times { |i| @sheet.tasks.create!(name: "タスクテスト#{i}") }
+      @sheet.status = Sheet.statuses[:select_1]
+    end
 
-      expect(@task.errors[:name]).to include("can't be blank")
+    it "select1 description" do
+      target = Message.new(@sheet)
+
+      expect(target.detail).to eq "書き上げたタスクを俯瞰して、特に重要なものを３つ選択して下さい。"
+    end
+
+    it "select1 last one" do
+      2.times { |i| @sheet.tasks[i].update!(select1: :true) }
+      # @sheet.tasks.create!(name: "選択テスト", select_1: true)
+      target = Message.new(@sheet)
+
+      expect(target.detail).to eq "残りひとつです！！"
     end
   end
 
-  context "タスク選択時"
+  context "緊急タスク選択時" do
+    before do
+      15.times { |i| @sheet.tasks.create!(name: "タスクテスト#{i}") }
+      @sheet.status = Sheet.statuses[:select_2]
+    end
+
+    it "select2 description" do
+      target = Message.new(@sheet)
+
+      expect(target.detail).to eq "再び全体を見渡して、緊急性の高いものを３つ選択して下さい。重要と被ってもOK"
+    end
+
+    it "select2 last one" do
+      2.times { |i| @sheet.tasks[i].update!(select2: :true) }
+      target = Message.new(@sheet)
+
+      expect(target.detail).to eq "残りひとつです！！"
+    end
+  end
+
+  context "別日/依頼タスク選択時" do
+    before do
+      15.times { |i| @sheet.tasks.create!(name: "タスクテスト#{i}") }
+      @sheet.status = Sheet.statuses[:select_3]
+    end
+
+    it "select3 description" do
+      target = Message.new(@sheet)
+
+      expect(target.detail).to eq "もう一度見渡して、人に頼めるものや今日する必要のないタスクを選択して下さい。個数制限なし選択が終われば完成ボタンを押して下さい。"
+    end
+  end
 end
+
