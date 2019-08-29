@@ -62,7 +62,7 @@ describe "Messages", type: :system do
           click_button "登録する"
         end
 
-        expect(page).to have_content("残り５つ！！")
+        expect(page).to have_content("残り5つ！！")
       end
     end
   end

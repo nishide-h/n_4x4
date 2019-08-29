@@ -84,7 +84,7 @@ describe "Tasks", type: :system do
 
       it "重要タスクを選択できる" do
         click_link ">"
-        expect(page).to have_selector(".badge.badge-info", text: "重要タスク選択")
+        expect(page).to have_selector(".border.border-info", text: "重要タスク選択")
 
         (all(".task")[0]).click
         expect(page).to have_selector("img.select1", count: 1)
@@ -93,7 +93,7 @@ describe "Tasks", type: :system do
       it "緊急タスクを選択できる" do
         click_link ">"
         click_link ">"
-        expect(page).to have_selector(".badge.badge-info", text: "緊急タスク選択")
+        expect(page).to have_selector(".border.border-info", text: "緊急タスク選択")
 
         (all(".task")[3]).click
         expect(page).to have_selector("img.select2", count: 1)
@@ -103,7 +103,7 @@ describe "Tasks", type: :system do
         click_link ">"
         click_link ">"
         click_link ">"
-        expect(page).to have_selector(".badge.badge-info", text: "別日/依頼タスク選択")
+        expect(page).to have_selector(".border.border-info", text: "別日/依頼タスク選択")
 
         (all(".task")[7]).click
         expect(page).to have_selector(".task.bg-dark", count: 1)
