@@ -8,7 +8,7 @@
     - unless @sheet.finished?
       = link_to ">", next_status_sheet_path(@sheet), method: :patch, class: "btn btn-primary py-0 m-2"
     div class="btn-group mt-1" role="group" aria-label="基本のボタングループ"
-      - if @tasks.count < 15
+      - if @tasks.count < 15 && @sheet.make_task?
         = link_to "タスク登録", new_sheet_task_path(@sheet), class: "btn-sm btn-success mr-1"
       = link_to "シート編集", edit_sheet_path(@sheet), class: "btn-sm btn-warning mr-1"
       = link_to "戻る", sheets_path, class: "btn-sm btn-secondary"

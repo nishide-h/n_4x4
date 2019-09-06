@@ -25,6 +25,10 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.save
+        if @sheet.tasks.size > 14
+           @sheet.update!(status: Sheet.statuses[:select_1])
+        end
+
         format.html { redirect_to sheet_path(@task.sheet_id), notice: "Task was successfully created." }
         format.json { render :show, status: :created, location: @task }
       else

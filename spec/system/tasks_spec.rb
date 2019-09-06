@@ -26,7 +26,6 @@ describe "Tasks", type: :system do
           click_link "タスク登録"
           fill_in "名称", with: "タスク#{i}"
           click_button "登録する"
-          expect(page).to have_content "タスク#{i}"
         end
 
         expect(page).not_to have_link "タスク登録"
@@ -34,6 +33,21 @@ describe "Tasks", type: :system do
         cards_title = all(".card-title").map(&:text)
         cards_title.delete_at(0)
         expect(cards_title).to eq ["タスク1", "タスク2", "タスク3", "タスク4", "タスク5", "タスク6", "タスク7", "タスク8", "タスク9", "タスク10", "タスク11", "タスク12", "タスク13", "タスク14", "タスク15"]
+      end
+
+      it "１５個タスク登録時、自動遷移すること" do
+        (1..14).each do |i|
+          click_link "タスク登録"
+          fill_in "名称", with: "タスク#{i}"
+          click_button "登録する"
+        end
+
+        click_link "タスク登録"
+        fill_in "名称", with: "タスク15"
+        click_button "登録する"
+
+        expect(page).to have_content "重要タスク選択"
+        expect(page).to have_content "タスク15"
       end
     end
 
