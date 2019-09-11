@@ -104,11 +104,41 @@ describe "Tasks", type: :system do
       it "3個タスク選択時、自動遷移すること" do
         (1..2).each do |i|
           all(".card-title")[i].click
-          sleep 0.5
+          sleep 0.1
         end
         all(".card-title")[3].click
 
         expect(page).to have_content "緊急タスク選択"
+      end
+    end
+
+    describe "select2" do
+      before do
+        (1..15).each do |i|
+          sheet_a.tasks.create!(name: "タスク#{i}")
+        end
+        sheet_a.update!(status: Sheet.statuses[:select_2])
+        visit sheet_path(sheet_a)
+      end
+
+      it "タスク登録ボタンが表示されていないこと" do
+        expect(page).not_to have_link "タスク登録"
+      end
+
+      it "タスククリックで緊急タスクとなること" do
+        all(".card-title")[1].click
+
+        expect(page).to have_css("img", class: "select2") 
+      end
+
+      it "3個タスク選択時、自動遷移すること" do
+        (1..2).each do |i|
+          all(".card-title")[i].click
+          sleep 0.1
+        end
+        all(".card-title")[3].click
+
+        expect(page).to have_content "別日/依頼タスク選択"
       end
     end
   end

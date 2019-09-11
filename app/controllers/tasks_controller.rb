@@ -81,6 +81,10 @@ class TasksController < ApplicationController
     @task.toggle(:select2)
     respond_to do |format|
       if @task.save
+        if @sheet.tasks.where(select2: :true).size == 3
+          @sheet.update!(status: Sheet.statuses[:select_3])
+        end
+
         format.html { redirect_to @sheet, notice: "Task was successfully updated." }
         format.json { render :show, status: :ok, location: @sheet }
       else
