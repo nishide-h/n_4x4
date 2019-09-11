@@ -81,6 +81,36 @@ describe "Tasks", type: :system do
         expect(cards_title).to eq ["task1", "edited task"]
       end
     end
+
+    describe "select1" do
+      before do
+        (1..15).each do |i|
+          sheet_a.tasks.create!(name: "タスク#{i}")
+        end
+        sheet_a.update!(status: Sheet.statuses[:select_1])
+        visit sheet_path(sheet_a)
+      end
+
+      it "タスク登録ボタンが表示されていないこと" do
+        expect(page).not_to have_link "タスク登録"
+      end
+
+      it "タスククリックで重要タスクとなること" do
+        all(".card-title")[1].click
+
+        expect(page).to have_css("img", class: "select1") 
+      end
+
+      it "3個タスク選択時、自動遷移すること" do
+        (1..2).each do |i|
+          all(".card-title")[i].click
+          sleep 0.5
+        end
+        all(".card-title")[3].click
+
+        expect(page).to have_content "緊急タスク選択"
+      end
+    end
   end
 
   context "ユーザーBのとき" do
