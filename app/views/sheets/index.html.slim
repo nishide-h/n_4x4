@@ -5,7 +5,7 @@
 .row
   div class="btn mt-1"
     = link_to "シート作成", new_sheet_path, class: "btn btn-primary"
-    span.notice.pl-1= notice
+    span.text-info.px-1.align-middle #{ Message.new(action: "index").detail }
 
 .mb-3
   = paginate @sheets

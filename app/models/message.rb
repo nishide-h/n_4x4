@@ -1,12 +1,32 @@
 # frozen_string_literal: true
 
+# 画面のメッセージ管理クラス
 class Message
-  # sheet情報を受取、そのときのメッセージを返す
-  def initialize(sheet)
+
+  # Messageインスタンスの作成
+  # ==== 引数
+  #  * +sheet+ - シートインスタンス
+  #  * +action+ - アクション名
+  def initialize(sheet=nil, action: nil)
     @sheet = sheet
+    @action = action
   end
 
+  # コンストラクタの値からメッセージを返す
+  # ==== 戻り値
+  # * +string+ - メッセージ文字列
   def detail
+    unless @sheet
+      case @action
+      when "index"
+        return "おはようございます！シートを作成して作業を整理しましょう！！"
+      when "new"
+        return "シート名称は「今日やることは？」や「本日タスク」はいかがでしょう？"
+      else
+        return  ""
+      end
+    end
+
     task_count = @sheet.tasks.size
 
     if @sheet.make_task?

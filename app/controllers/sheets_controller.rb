@@ -5,7 +5,6 @@ class SheetsController < ApplicationController
   before_action :set_sheet, only: [:show, :edit, :update, :next_status, :prev_status, :destroy]
 
   def index
-    flash[:notice] = "おはようございます！シートを作成して作業を整理しましょう！！"
     @sheets = current_user.sheets.order(updated_at: "DESC").page(params[:page])
   end
 
@@ -14,7 +13,6 @@ class SheetsController < ApplicationController
   end
 
   def new
-    flash[:notice] = "シート名称は「今日やることは？」や「本日タスク」はいかがでしょう？"
     @sheet = Sheet.new
   end
 

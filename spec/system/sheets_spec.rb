@@ -28,6 +28,10 @@ describe "Sheet", type: :system do
         expect(page).to have_selector "th", text: "更新日"
         expect(all("tr td")[0].text).to eq "シートC"
       end
+
+      it "一覧にメッセージが表示されていること" do
+        expect(page).to have_content "おはようございます！シートを作成して作業を整理しましょう！！"
+      end
     end
 
     context "ユーザーBアカウント" do
@@ -71,6 +75,12 @@ describe "Sheet", type: :system do
       fill_in "Eメール", with: user_a.email
       fill_in "パスワード", with: user_a.password
       click_button "Log in"
+    end
+
+    it "シート作成画面にメッセージが表示されること" do
+      click_link "シート作成"
+
+      expect(page).to have_content "シート名称は「今日やることは？」や「本日タスク」はいかがでしょう？"
     end
 
     it "シートが作成でき、一覧に表示されること" do

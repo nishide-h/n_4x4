@@ -1,4 +1,8 @@
-h1 シート作成
+.row
+  h1 シート作成
+.row
+  span.text-info.px-1.align-middle #{ Message.new(action: "new").detail }
+
 = render 'form', sheet: @sheet
 = link_to '戻る', sheets_path, class: "btn btn-secondary mt-1"
 
