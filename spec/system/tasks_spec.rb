@@ -110,6 +110,19 @@ describe "Tasks", type: :system do
 
         expect(page).to have_content "緊急タスク選択"
       end
+
+      it "3個以上タスク選択時、エラーを表示すること" do
+        (1..3).each do |i|
+          all(".card-title")[i].click
+          sleep 0.1
+        end
+        click_link "<"
+
+        all(".card-title")[4].click
+        sleep 0.1
+
+        expect(page).to have_content "選択数は3個までです。"
+      end
     end
 
     describe "select2" do
