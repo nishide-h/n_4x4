@@ -11,6 +11,8 @@ class Task < ApplicationRecord
     def check_number_of_tasks
       if self.sheet && self.sheet.tasks.count > 15
         errors.add(:sheet, "1シートのタスク数は15個までです。")
+      end
+    end
 
     def select1_number
       if self.sheet && self.sheet.tasks.where(select1: true).size >= 3
