@@ -4,8 +4,8 @@ class Task < ApplicationRecord
   belongs_to :sheet
 
   validates :name, presence: true
-  validate :check_number_of_tasks
-  validate :select1_number
+  # validate :check_number_of_tasks
+  # validate :select1_number
 
   private
     def check_number_of_tasks
