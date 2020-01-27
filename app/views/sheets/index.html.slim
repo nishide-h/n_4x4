@@ -14,7 +14,8 @@ table.table.table-hover
   thead.thead-default
     tr
       th 名称
-      th 更新日
+      th 作成日
+      th 状況
       th 操作
   tbody
     - @sheets.each do |sheet|
@@ -22,6 +23,7 @@ table.table.table-hover
         td
           = sheet.title
         td
+          = sheet.created_at.strftime('%Y/%m/%d')
         td
           = sheet.status_i18n
         td

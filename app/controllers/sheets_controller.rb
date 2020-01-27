@@ -5,7 +5,7 @@ class SheetsController < ApplicationController
   before_action :set_sheet, only: [:show, :edit, :update, :next_status, :prev_status, :destroy]
 
   def index
-    @sheets = current_user.sheets.order(updated_at: "DESC").page(params[:page])
+    @sheets = current_user.sheets.order(created_at: "DESC").page(params[:page])
   end
 
   def show
