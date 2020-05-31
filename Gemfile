@@ -4,7 +4,7 @@ source "https://rubygems.org"
 
 ruby "2.7.1"
 gem "rails", "~> 5.2.0"
-gem "puma", "~> 3.12"
+gem "puma", ">= 3.12.6"
 gem "sassc-rails"
 gem "uglifier", ">= 1.3.0"
 # gem 'mini_racer', platforms: :ruby
