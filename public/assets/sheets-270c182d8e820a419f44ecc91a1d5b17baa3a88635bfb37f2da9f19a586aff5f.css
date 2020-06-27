@@ -1,0 +1,55 @@
+/* line 12, app/assets/stylesheets/sheets.scss */
+body {
+  background-color: #F4F5F7;
+  font-family: "Rounded Mplus 1c";
+}
+
+/* line 18, app/assets/stylesheets/sheets.scss */
+.container {
+  margin: 10px;
+  display: flex;
+  flex-flow: row wrap;
+  background-color: white-color;
+  border-top: 2px solid #3eb370;
+  border-left: 2px solid #3eb370;
+}
+
+/* line 25, app/assets/stylesheets/sheets.scss */
+.container div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(100% / 4 - 2px);
+  height: 100px;
+  border-right: 2px solid #3eb370;
+  border-bottom: 2px solid #3eb370;
+  z-index: 1;
+}
+
+/* line 34, app/assets/stylesheets/sheets.scss */
+.container div.header {
+  background-color: #fbfaf5;
+  z-index: 2;
+}
+
+/* line 38, app/assets/stylesheets/sheets.scss */
+.container div.header p {
+  color: #3eb370;
+  font-size: 30px;
+  font-family: "Rounded Mplus 1c";
+  z-index: 3;
+}
+
+/* line 45, app/assets/stylesheets/sheets.scss */
+.container div.task {
+  background-color: #fbfaf5;
+  color: #0095d9;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+/* line 51, app/assets/stylesheets/sheets.scss */
+.container div.task.exclution {
+  background-color: #DDDDDD;
+}
