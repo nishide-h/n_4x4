@@ -2,13 +2,13 @@
   "name": "n_4x4",
   "private": true,
   "dependencies": {
-    "@rails/webpacker": "5.1.1",
-    "core-js": "3",
-    "vue": "^2.6.11",
-    "vue-loader": "^15.9.3",
-    "vue-template-compiler": "^2.6.11"
+    "@rails/webpacker": "^6.0.0-beta.5",
+    "core-js": "3.8.3",
+    "vue": "^2.6.12",
+    "vue-loader": "^15.9.6",
+    "vue-template-compiler": "^2.6.12"
   },
   "devDependencies": {
-    "webpack-dev-server": "^3.11.0"
+    "webpack-dev-server": "^3.11.2"
   }
 }
