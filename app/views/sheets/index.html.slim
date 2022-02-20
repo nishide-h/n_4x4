@@ -10,6 +10,7 @@
 .mb-3
   = paginate @sheets
   = page_entries_info @sheets
+  span &nbsp 総レコード数：#{Sheet.count + Task.count + User.count} 件
 table.table.table-hover
   thead.thead-default
     tr
