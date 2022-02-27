@@ -3,7 +3,7 @@
 source "https://rubygems.org"
 
 ruby "2.7.1"
-gem "rails", "~> 6.1.4"
+gem "rails", "~> 7.0.2"
 gem "puma", ">= 3.12.6"
 gem "sassc-rails"
 gem "uglifier", ">= 1.3.0"
